@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -24,15 +25,20 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
 import fruitbasket.com.bodyfit.Conditions;
 import fruitbasket.com.bodyfit.MyApplication;
 import fruitbasket.com.bodyfit.R;
+import fruitbasket.com.bodyfit.ui.MainActivity;
 import fruitbasket.com.bodyfit.ui.TitleBar;
 
 /**
@@ -45,7 +51,7 @@ public class ExerciseSocietyFragment extends Fragment {
     private ListView listview;
     private List<ItemContainer> mData;
     private TitleBar titleBar;
-    private static ArrayList<ItemContainer> list = new ArrayList<ItemContainer>();
+    private static List<ItemContainer> list = new LinkedList<ItemContainer>();
 
     private Integer headID;
     private String name,content;
@@ -59,10 +65,11 @@ public class ExerciseSocietyFragment extends Fragment {
         init(view);
         initTitleBar();
         updateData();
-        Collections.reverse(list);  //反转list使得后面添加的数据显示在前面
+        Collections.sort(list);//反转list使得后面添加的数据显示在前面
         mData=list;
-        SocietyAdapter adapter= new SocietyAdapter(getActivity(), (ArrayList) mData);
+        SocietyAdapter adapter= new SocietyAdapter(getActivity(), (LinkedList) mData);
         listview.setAdapter(adapter);
+
         return view;
     }
 
@@ -73,7 +80,7 @@ public class ExerciseSocietyFragment extends Fragment {
             name="这有冰可乐";
             headID=(Integer)R.drawable.touxiang1;
             imagePath=bundle.getStringArray(Conditions.EXERCISE_SOCIETY_IMAGE);
-            ArrayList<Map<String,Object>> imagelist=new ArrayList<Map<String,Object>>();
+            LinkedList<Map<String,Object>> imagelist=new LinkedList<Map<String,Object>>();
             if(imagePath!=null){
                 for(int i=0;i<imagePath.length;i++){
                     String absPath=imagePath[i];
@@ -91,7 +98,10 @@ public class ExerciseSocietyFragment extends Fragment {
                     Log.i(TAG,imagePath[i]);
                 }
             }
-            ItemContainer itemContainer=new ItemContainer(headID,name,content,imagelist);
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss");
+            Date date = new Date(System.currentTimeMillis());
+            String time=simpleDateFormat.format(date);
+            ItemContainer itemContainer=new ItemContainer(headID,name,content,time,imagelist);
             list.add(itemContainer);
         }
     }
@@ -110,80 +120,39 @@ public class ExerciseSocietyFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(getContext(),PublishActivity.class);
-                startActivity(intent);
+                startActivityForResult(new Intent(getContext(),PublishActivity.class),Conditions.SOCIETY_R_CODE);
             }
         });
     }
-    private ArrayList getData() {
-        for(int i=0;i<20;i++) {
-            ArrayList<Map<String,Object>> imagelist=new ArrayList<Map<String,Object>>();
-            headID=(Integer)R.drawable.society_head;
-            name="张三"+i;
-            content="";
-            for(int j=0;j<3;j++){
-                content+="测试 ";
-            }
-            if(i==0){
-                name="这有冰可乐";
-                content="滴，健身卡！";
-                headID=(Integer)R.drawable.touxiang1;
-                ItemContainer itemContainer=new ItemContainer(headID,name,content,imagelist);
-                list.add(itemContainer);
-                continue;
-            }
-            if(i==1){
-                name="杨玉米";
-                content="想给全世界安利这款手套！性价比超高，提供实时且专业的反馈。自从有了智能健身手套手套，再也不用去健身房了呢~";
-                headID=(Integer)R.drawable.touxiang4;
-                Map<String,Object> map=new HashMap<String,Object>();
-                map.put("image",R.drawable.pengyouquan2);
-                imagelist.add(map);
-                ItemContainer itemContainer=new ItemContainer(headID,name,content,imagelist);
-                list.add(itemContainer);
-                continue;
-            }
-            if(i==2){
-                name="54成";
-                content="王者绝非偶然，实力成就非凡。";
-                headID=(Integer)R.drawable.touxiang3;
-                Map<String,Object> map=new HashMap<String,Object>();
-                map.put("image",R.drawable.pengyouquan1);
-                imagelist.add(map);
-                Map<String,Object> map1=new HashMap<String,Object>();
-                map1.put("image",R.drawable.pengyouquan3);
-                imagelist.add(map1);
-                ItemContainer itemContainer=new ItemContainer(headID,name,content,imagelist);
-                list.add(itemContainer);
-                continue;
-            }
-            for(int j=0;j<i;j++) {
-                if(j==9)
-                    break;
-                Map<String,Object> map=new HashMap<String,Object>();
-                map.put("image",R.drawable.society_head);
-                if(j==1)
-                imagelist.add(map);
-            }
-            ItemContainer itemContainer=new ItemContainer(headID,name,content,imagelist);
 
-            list.add(itemContainer);
-        }
-        return list;
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data){
+        super.onActivityResult(requestCode,resultCode,data);
+
     }
 }
 
-class ItemContainer{
+class ItemContainer implements Comparable<ItemContainer>{
     public int headID;
     public String name;
     public String content;
-    public ArrayList imageArray;
-    public ItemContainer(int h,String n,String con,ArrayList list){
-        headID=h;
-        name=n;
-        content=con;
-        imageArray=list;
+    public String time;
+    public LinkedList imageArray;
+
+    public ItemContainer(int headID,String name,String content,String time,LinkedList imageArray){
+        this.headID=headID;
+        this.name=name;
+        this.content=content;
+        this.time=time;
+        this.imageArray=imageArray;
+    }
+
+    @Override
+    public int compareTo(@NonNull ItemContainer itemContainer) {
+        return itemContainer.time.compareTo(time);
     }
 }
+
 
 class SocietyAdapter extends BaseAdapter{
     public static final String TAG="SocietyAdapter";
@@ -191,7 +160,7 @@ class SocietyAdapter extends BaseAdapter{
     private Context context;
     private List<ItemContainer> item;
 
-    public SocietyAdapter(Context con,ArrayList list){
+    public SocietyAdapter(Context con,LinkedList list){
         context=con;
         item=list;
     }
@@ -224,7 +193,7 @@ class SocietyAdapter extends BaseAdapter{
             viewholder.content= (TextView) convertView.findViewById(R.id.content);
             viewholder.picture= (GridView) convertView.findViewById(R.id.picture);
             viewholder.comment= (Button) convertView.findViewById(R.id.society_comment);
-
+            viewholder.time=(TextView)convertView.findViewById(R.id.society_time);
             convertView.setTag(viewholder);
         }else{
             viewholder= (ViewHolder) convertView.getTag();
@@ -233,6 +202,7 @@ class SocietyAdapter extends BaseAdapter{
         viewholder.image.setImageResource(itemContainer.headID);
         viewholder.name.setText(itemContainer.name);
         viewholder.content.setText(itemContainer.content);
+        viewholder.time.setText(itemContainer.time);
 
         SimpleAdapter simpleAdapter=new SimpleAdapter(context,itemContainer.imageArray,R.layout.cell,new String[]{"image"},new int[]{R.id.imageView});
         simpleAdapter.setViewBinder(new SimpleAdapter.ViewBinder() {
@@ -261,6 +231,7 @@ class SocietyAdapter extends BaseAdapter{
                 Toast.makeText(context, "comment", Toast.LENGTH_SHORT).show();
             }
         });
+
 
         return convertView;
     }

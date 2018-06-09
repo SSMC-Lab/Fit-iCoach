@@ -81,7 +81,7 @@ public class TitleBar extends LinearLayout{
         if (rightTitle!=null) {
             tx_right.setVisibility(View.VISIBLE);
             iv_right.setVisibility(View.GONE);
-            tx_right.setTextColor(Color.WHITE);
+            tx_right.setTextColor(Color.BLACK);
             tx_right.setText(rightTitle);
         }
         return this;
@@ -146,4 +146,13 @@ public class TitleBar extends LinearLayout{
         }
         return this;
     }
+
+    public TitleBar setRightTextListening(View.OnClickListener listener) {
+        if (tx_right.getVisibility() == View.VISIBLE) {
+            tx_right.setOnClickListener(listener);
+        }
+        return this;
+    }
+
+
 }

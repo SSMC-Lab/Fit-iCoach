@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,6 +15,7 @@ import android.widget.TabWidget;
 
 import org.litepal.LitePal;
 
+import fruitbasket.com.bodyfit.Conditions;
 import fruitbasket.com.bodyfit.ExerciseSociety.ExerciseSocietyFragment;
 import fruitbasket.com.bodyfit.R;
 
@@ -51,6 +54,7 @@ public class MainActivity extends BaseTabActivity {
 
     @Override
     protected void onActivityResult(int requestCode,int resultCode, Intent data){
+        Log.i(TAG,"activityResult="+requestCode+" "+resultCode);
         if(requestCode==0) {
             if (resultCode == RESULT_OK){
                 BluetoothAdapter.getDefaultAdapter().enable();
@@ -60,6 +64,8 @@ public class MainActivity extends BaseTabActivity {
                 finish();
             //else 关闭整个程序
         }
+        int value=getIntent().getIntExtra("id",0);
+        Log.i(TAG,"onResume "+value);
         super.onActivityResult(requestCode,resultCode,data);
     }
 
@@ -119,6 +125,22 @@ public class MainActivity extends BaseTabActivity {
         ImageView testTab=(ImageView)inflater.inflate(R.layout.layout_tab,mTabWidget,false);
         addTab(testTab,test,"test");
         setCurrentTab(3);*/
+    }
+
+    @Override
+    public void onResume(){
+        Bundle bundle =getIntent().getExtras();
+        int fragmentId=getIntent().getIntExtra("fragmentId",0);
+        if(fragmentId==Conditions.SOCIETY_R_CODE) {
+            FragmentManager fm=getSupportFragmentManager();
+            FragmentTransaction ft=fm.beginTransaction();
+            ExerciseSocietyFragment fragment=new ExerciseSocietyFragment();
+            fragment.setArguments(bundle);
+            ft.replace(R.id.fragment_container,fragment);
+            ft.commit();
+            finish();
+        }
+        super.onResume();
     }
 
 }

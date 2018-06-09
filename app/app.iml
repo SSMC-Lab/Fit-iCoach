@@ -146,8 +146,10 @@
     <orderEntry type="library" name="Gradle: org.litepal.android:core-1.6.1" level="project" />
     <orderEntry type="library" name="Gradle: __local_aars__:E.\Android\BodyFitOriginal\app\libs\weka.jar:unspecified@jar" level="project" />
     <orderEntry type="library" name="Gradle: __local_aars__:E.\Android\BodyFitOriginal\app\libs\commons-math-1.2.jar:unspecified@jar" level="project" />
+    <orderEntry type="library" name="Gradle: com.github.bumptech.glide:glide:3.7.0@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:support-core-utils-25.1.0" level="project" />
     <orderEntry type="library" name="Gradle: __local_aars__:E.\Android\BodyFitOriginal\app\libs\libsvm.jar:unspecified@jar" level="project" />
     <orderEntry type="module" module-name="tableLayout" />
+    <orderEntry type="module" module-name="pictureselector" />
   </component>
 </module>

@@ -42,6 +42,10 @@
         <activity android:name=".ui.DietAdviceSelectActivity" />
         <activity android:name=".ui.DietAdviceActivity" />
         <activity android:name=".ExerciseSociety.PublishActivity" />
+        <activity
+            android:name="com.lidong.photopicker.PhotoPickerActivity"
+            android:configChanges="orientation|screenSize"/>
+        <activity android:name="com.lidong.photopicker.PhotoPreviewActivity" />
     </application>
 
 </manifest>

@@ -9,7 +9,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/tabelLayout" />
+            <option value="$PROJECT_DIR$/pictureselector" />
             <option value="$PROJECT_DIR$/tableLayout" />
           </set>
         </option>

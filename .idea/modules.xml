@@ -4,7 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/BodyFitOriginal.iml" filepath="$PROJECT_DIR$/BodyFitOriginal.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/tabelLayout/tabelLayout.iml" filepath="$PROJECT_DIR$/tabelLayout/tabelLayout.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pictureselector/pictureselector.iml" filepath="$PROJECT_DIR$/pictureselector/pictureselector.iml" />
       <module fileurl="file://$PROJECT_DIR$/tableLayout/tableLayout.iml" filepath="$PROJECT_DIR$/tableLayout/tableLayout.iml" />
     </modules>
   </component>
