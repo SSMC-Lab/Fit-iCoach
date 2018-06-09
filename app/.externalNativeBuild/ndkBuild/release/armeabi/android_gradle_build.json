@@ -1,0 +1,41 @@
+{
+  "buildFiles": [
+    "C:\\Users\\lkeye\\AndroidStudioProjects\\BodyFit10220049\\app\\src\\main\\jni\\Android.mk",
+    "C:\\Users\\lkeye\\AndroidStudioProjects\\BodyFit10220049\\app\\src\\main\\jni\\Application.mk"
+  ],
+  "cleanCommands": [
+    "C:\\Users\\lkeye\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\ndk-build.cmd NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003dC:\\Users\\lkeye\\AndroidStudioProjects\\BodyFit10220049\\app\\src\\main\\jni\\Android.mk NDK_APPLICATION_MK\u003dC:\\Users\\lkeye\\AndroidStudioProjects\\BodyFit10220049\\app\\src\\main\\jni\\Application.mk APP_ABI\u003darmeabi NDK_ALL_ABIS\u003darmeabi NDK_DEBUG\u003d0 APP_PLATFORM\u003dandroid-18 NDK_OUT\u003dC:/Users/lkeye/AndroidStudioProjects/BodyFit10220049/app/build/intermediates/ndkBuild/release/obj NDK_LIBS_OUT\u003dC:\\Users\\lkeye\\AndroidStudioProjects\\BodyFit10220049\\app\\build\\intermediates\\ndkBuild\\release\\lib clean"
+  ],
+  "libraries": {
+    "jni-dtw-release-armeabi": {
+      "buildCommand": "C:\\Users\\lkeye\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\ndk-build.cmd NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003dC:\\Users\\lkeye\\AndroidStudioProjects\\BodyFit10220049\\app\\src\\main\\jni\\Android.mk NDK_APPLICATION_MK\u003dC:\\Users\\lkeye\\AndroidStudioProjects\\BodyFit10220049\\app\\src\\main\\jni\\Application.mk APP_ABI\u003darmeabi NDK_ALL_ABIS\u003darmeabi NDK_DEBUG\u003d0 APP_PLATFORM\u003dandroid-18 NDK_OUT\u003dC:/Users/lkeye/AndroidStudioProjects/BodyFit10220049/app/build/intermediates/ndkBuild/release/obj NDK_LIBS_OUT\u003dC:\\Users\\lkeye\\AndroidStudioProjects\\BodyFit10220049\\app\\build\\intermediates\\ndkBuild\\release\\lib C:/Users/lkeye/AndroidStudioProjects/BodyFit10220049/app/build/intermediates/ndkBuild/release/obj/local/armeabi/libjni-dtw.so",
+      "toolchain": "toolchain-armeabi",
+      "abi": "armeabi",
+      "artifactName": "jni-dtw",
+      "files": [
+        {
+          "src": "C:\\Users\\lkeye\\AndroidStudioProjects\\BodyFit10220049\\app\\src\\main\\jni\\analysis.cpp",
+          "flags": "\"-gcc-toolchain\" \"C:/Users/lkeye/AppData/Local/Android/Sdk/ndk-bundle/build//../toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64\" \"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-Wno-invalid-command-line-argument\" \"-Wno-unused-command-line-argument\" \"-no-canonical-prefixes\" \"-fno-integrated-as\" \"-g\" \"-target\" \"armv5te-none-linux-androideabi18\" \"-march\u003darmv5te\" \"-mtune\u003dxscale\" \"-msoft-float\" \"-fno-exceptions\" \"-fno-rtti\" \"-mthumb\" \"-Oz\" \"-DNDEBUG\" \"-IC:/Users/lkeye/AppData/Local/Android/Sdk/ndk-bundle/build//../sources/cxx-stl/system/include\" \"-IC:/Users/lkeye/AndroidStudioProjects/BodyFit10220049/app/src/main/jni\" \"-DANDROID\" \"-D__ANDROID_API__\u003d18\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"--sysroot\" \"C:/Users/lkeye/AppData/Local/Android/Sdk/ndk-bundle/build//../sysroot\" \"-isystem\" \"C:/Users/lkeye/AppData/Local/Android/Sdk/ndk-bundle/build//../sysroot/usr/include/arm-linux-androideabi\""
+        },
+        {
+          "src": "C:\\Users\\lkeye\\AndroidStudioProjects\\BodyFit10220049\\app\\src\\main\\jni\\dtw.cpp",
+          "flags": "\"-gcc-toolchain\" \"C:/Users/lkeye/AppData/Local/Android/Sdk/ndk-bundle/build//../toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64\" \"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-Wno-invalid-command-line-argument\" \"-Wno-unused-command-line-argument\" \"-no-canonical-prefixes\" \"-fno-integrated-as\" \"-g\" \"-target\" \"armv5te-none-linux-androideabi18\" \"-march\u003darmv5te\" \"-mtune\u003dxscale\" \"-msoft-float\" \"-fno-exceptions\" \"-fno-rtti\" \"-mthumb\" \"-Oz\" \"-DNDEBUG\" \"-IC:/Users/lkeye/AppData/Local/Android/Sdk/ndk-bundle/build//../sources/cxx-stl/system/include\" \"-IC:/Users/lkeye/AndroidStudioProjects/BodyFit10220049/app/src/main/jni\" \"-DANDROID\" \"-D__ANDROID_API__\u003d18\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"--sysroot\" \"C:/Users/lkeye/AppData/Local/Android/Sdk/ndk-bundle/build//../sysroot\" \"-isystem\" \"C:/Users/lkeye/AppData/Local/Android/Sdk/ndk-bundle/build//../sysroot/usr/include/arm-linux-androideabi\""
+        },
+        {
+          "src": "C:\\Users\\lkeye\\AndroidStudioProjects\\BodyFit10220049\\app\\src\\main\\jni\\dtw_Impl.cpp",
+          "flags": "\"-gcc-toolchain\" \"C:/Users/lkeye/AppData/Local/Android/Sdk/ndk-bundle/build//../toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64\" \"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-Wno-invalid-command-line-argument\" \"-Wno-unused-command-line-argument\" \"-no-canonical-prefixes\" \"-fno-integrated-as\" \"-g\" \"-target\" \"armv5te-none-linux-androideabi18\" \"-march\u003darmv5te\" \"-mtune\u003dxscale\" \"-msoft-float\" \"-fno-exceptions\" \"-fno-rtti\" \"-mthumb\" \"-Oz\" \"-DNDEBUG\" \"-IC:/Users/lkeye/AppData/Local/Android/Sdk/ndk-bundle/build//../sources/cxx-stl/system/include\" \"-IC:/Users/lkeye/AndroidStudioProjects/BodyFit10220049/app/src/main/jni\" \"-DANDROID\" \"-D__ANDROID_API__\u003d18\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"--sysroot\" \"C:/Users/lkeye/AppData/Local/Android/Sdk/ndk-bundle/build//../sysroot\" \"-isystem\" \"C:/Users/lkeye/AppData/Local/Android/Sdk/ndk-bundle/build//../sysroot/usr/include/arm-linux-androideabi\""
+        }
+      ],
+      "output": "C:\\Users\\lkeye\\AndroidStudioProjects\\BodyFit10220049\\app\\build\\intermediates\\ndkBuild\\release\\obj\\local\\armeabi\\libjni-dtw.so"
+    }
+  },
+  "toolchains": {
+    "toolchain-armeabi": {
+      "cppCompilerExecutable": "C:\\Users\\lkeye\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\build\\..\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang++.exe"
+    }
+  },
+  "cFileExtensions": [],
+  "cppFileExtensions": [
+    "cpp"
+  ]
+}

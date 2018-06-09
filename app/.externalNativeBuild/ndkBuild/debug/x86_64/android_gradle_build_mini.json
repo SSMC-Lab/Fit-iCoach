@@ -1,0 +1,17 @@
+{
+  "buildFiles": [
+    "E:\\Android\\BodyFitOriginal\\app\\src\\main\\jni\\Android.mk",
+    "E:\\Android\\BodyFitOriginal\\app\\src\\main\\jni\\Application.mk"
+  ],
+  "cleanCommands": [
+    "C:\\Users\\lkeye\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\ndk-build.cmd NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003dE:\\Android\\BodyFitOriginal\\app\\src\\main\\jni\\Android.mk NDK_APPLICATION_MK\u003dE:\\Android\\BodyFitOriginal\\app\\src\\main\\jni\\Application.mk APP_ABI\u003dx86_64 NDK_ALL_ABIS\u003dx86_64 NDK_DEBUG\u003d1 APP_PLATFORM\u003dandroid-21 NDK_OUT\u003dE:/Android/BodyFitOriginal/app/build/intermediates/ndkBuild/debug/obj NDK_LIBS_OUT\u003dE:\\Android\\BodyFitOriginal\\app\\build\\intermediates\\ndkBuild\\debug\\lib clean"
+  ],
+  "libraries": {
+    "jni-dtw-debug-x86_64": {
+      "artifactName": "jni-dtw",
+      "buildCommand": "C:\\Users\\lkeye\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\ndk-build.cmd NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003dE:\\Android\\BodyFitOriginal\\app\\src\\main\\jni\\Android.mk NDK_APPLICATION_MK\u003dE:\\Android\\BodyFitOriginal\\app\\src\\main\\jni\\Application.mk APP_ABI\u003dx86_64 NDK_ALL_ABIS\u003dx86_64 NDK_DEBUG\u003d1 APP_PLATFORM\u003dandroid-21 NDK_OUT\u003dE:/Android/BodyFitOriginal/app/build/intermediates/ndkBuild/debug/obj NDK_LIBS_OUT\u003dE:\\Android\\BodyFitOriginal\\app\\build\\intermediates\\ndkBuild\\debug\\lib E:/Android/BodyFitOriginal/app/build/intermediates/ndkBuild/debug/obj/local/x86_64/libjni-dtw.so",
+      "abi": "x86_64",
+      "output": "E:\\Android\\BodyFitOriginal\\app\\build\\intermediates\\ndkBuild\\debug\\obj\\local\\x86_64\\libjni-dtw.so"
+    }
+  }
+}

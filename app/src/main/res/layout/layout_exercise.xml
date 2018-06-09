@@ -1,0 +1,574 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@drawable/behind_background"
+    android:scrollbars="none">
+
+
+    <RelativeLayout
+        android:id="@+id/rl_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/behind_background"
+        android:isScrollContainer="true">
+
+
+        <LinearLayout
+            android:id="@+id/demonstration"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/flow_background"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="动作演示"
+                android:textColor="@color/black" />
+
+            <!--<pl.droidsonroids.gif.GifImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/demonstration" />-->
+            <ImageView
+                android:id="@+id/currentActionImg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/action2"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/info_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/demonstration"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/flow_background"
+            android:clickable="true"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="总共训练"
+                    android:textColor="@color/black" />
+
+                <!--<TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="10dp"
+                    android:text=">"
+                    android:textColor="@color/black"
+                    android:textSize="30dp" />-->
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/total_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:text="0"
+                    android:textColor="@color/black"
+                    android:textSize="50dp"/>
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/total_time"
+                    android:layout_gravity="center"
+                    android:layout_toEndOf="@+id/total_time"
+                    android:text="秒"
+                    android:textColor="@color/black"
+                    android:textSize="15dp" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_marginTop="12dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/complete_img"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginLeft="24dp"
+                        android:layout_centerHorizontal="true"
+                        android:src="@drawable/action_evaluation" />
+
+                    <TextView
+                        android:id="@+id/exercise_num"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/complete_img"
+                        android:layout_centerHorizontal="true"
+                        android:text="0"
+                        android:textColor="@color/black"
+                        android:textSize="35dp" />
+
+                    <TextView
+                        android:id="@+id/finish_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/exercise_num"
+                        android:layout_centerHorizontal="true"
+                        android:text="完成/次数"
+                        android:textSize="12dp"
+                        android:textColor="@color/black"/>
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+                    <ImageView
+                        android:id="@+id/time_img"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_centerHorizontal="true"
+                        android:src="@drawable/action_evaluation" />
+                    <TextView
+                        android:id="@+id/total_num"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/time_img"
+                        android:layout_centerHorizontal="true"
+                        android:text="0"
+                        android:textColor="@color/black"
+                        android:textSize="35dp" />
+
+                    <TextView
+                        android:id="@+id/total_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/total_num"
+                        android:layout_centerHorizontal="true"
+                        android:text="用时/s"
+                        android:textSize="12dp"
+                        android:textColor="@color/black"/>
+
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/DTW_img"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_centerHorizontal="true"
+                        android:src="@drawable/action_evaluation" />
+
+                    <TextView
+                        android:id="@+id/action_grade"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/DTW_img"
+                        android:layout_centerHorizontal="true"
+                        android:text="0"
+                        android:textColor="@color/black"
+                        android:textSize="35dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/action_grade"
+                        android:layout_centerHorizontal="true"
+                        android:text="评分"
+                        android:textColor="@color/black"
+                        android:textSize="12dp"
+                        android:id="@+id/textView" />
+                </RelativeLayout>
+`
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/showExerciseType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/info_layout"
+            android:layout_marginTop="0.5dp"
+            android:background="@drawable/flow_background">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/action_type" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="15dp"
+                android:text="动作类型:"
+                android:textColor="@color/black"
+                 />
+
+            <TextView
+                android:id="@+id/exercise_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="15dp"
+                android:text="锤式弯举"
+                android:textColor="#1E90FF"
+                android:textSize="15dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/actionAssessment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/showExerciseType"
+            android:layout_marginTop="0.1dp"
+            android:background="@drawable/flow_background">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="20dp"
+                android:scaleType="fitStart"
+                android:src="@drawable/select" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="15dp"
+                android:text="动作评价:"
+                android:textColor="@color/black"
+                 />
+
+            <TextView
+                android:id="@+id/exercise_assess"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="15dp"
+                android:text="太快/太慢/注意保持速度/合格"
+                android:textColor="#1E90FF"
+                android:textSize="15dp" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/button_layout"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:gravity="bottom"
+            android:layout_below="@+id/actionAssessment">
+
+            <fruitbasket.com.bodyfit.ui.NbButton
+                android:id="@+id/button_action_list"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="1"
+                android:text="动作列表"
+                android:textColor="#fff" />
+
+            <ToggleButton
+                android:id="@+id/start_doing"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="140dp"
+                android:background="@drawable/togglebutton"
+                android:textColor="#fff"
+                android:textOff="START"
+                android:textOn="STOP" />
+            <Button
+                android:id="@+id/select_grade"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="260dp"
+
+                android:background="@drawable/button_shape"
+                android:text="等级选择"
+                android:textColor="#fff" />
+        </RelativeLayout>
+
+
+
+        <!--<Button
+            android:id="@+id/setExercise"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/button_layout"
+            android:layout_marginTop="-100dp"
+            android:background="@drawable/button_style"
+            android:drawableLeft="@drawable/select"
+            android:drawablePadding="20dp"
+            android:gravity="center_vertical"
+            android:text="健身选择" />-->
+    <LinearLayout
+        android:id="@+id/Assessment_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button_layout"
+        android:background="@drawable/flow_background"
+        android:clickable="true"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="动作评估"
+                android:textColor="@color/black" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/table_layout"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/layout_shape">
+            <LinearLayout
+                android:id="@+id/name_table"
+                android:layout_marginTop="0.1dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/flow_background">
+                <TextView
+                    android:layout_width="60dp"
+                    android:layout_height="50dp"
+                    android:text="" />
+                <View
+                    android:layout_width="1px"
+                    android:layout_height="50dp"
+                    android:background="#87CEFA"/>
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
+                    android:text="持续时间"
+                    android:gravity="center"
+                    android:textColor="#2F2F4F"
+                    android:textSize="15dp"/>
+                <View
+                    android:layout_width="1px"
+                    android:layout_height="50dp"
+                    android:background="#87CEFA"/>
+                <TextView
+
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
+                    android:text="训练强度"
+                    android:gravity="center"
+                    android:textColor="#2F2F4F"
+                    android:textSize="15dp"/>
+            </LinearLayout>
+
+            <win.smartown.android.library.tableLayout.TableLayout
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    app:tableTextSize="10dp"
+                    app:tableTextColorSelected="#fff"
+                    app:tableTextColor="#333"
+                    app:tableRowHeight="46dp"
+                    app:tableDividerSize="1px"
+                    app:tableDividerColor="#1E90FF"
+                    app:tableColumnPadding="15dp"
+                    app:backgroundColorSelected="@color/colorAccent"
+                    android:background="@android:color/white"
+                    android:id="@+id/SingleDataTable"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lineChartLayout"
+            android:layout_width="match_parent"
+            android:layout_height="260dp"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/flow_background"
+            android:layout_below="@id/table_layout"
+            android:orientation="vertical">
+
+            <!--<TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="加速度计"
+                android:textColor="@color/black" />
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/LineCharta"
+                android:layout_width="match_parent"
+                android:layout_height="180dp">
+
+            </com.github.mikephil.charting.charts.LineChart>-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="陀螺仪"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="数据点个数："
+                    android:id="@+id/text_point"
+                    android:layout_marginLeft="80dp"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/black"/>
+
+            </LinearLayout>
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/LineChartg"
+                android:layout_width="match_parent"
+                android:layout_height="200dp">
+
+            </com.github.mikephil.charting.charts.LineChart>
+            <Button
+                android:id="@+id/start_test"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0.1dp"
+                android:background="@drawable/button_style"
+                android:gravity="center"
+                android:text="发送测试数据"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+        <!--<LinearLayout
+            android:layout_marginTop="5dp"
+            android:layout_below="@+id/setExercise"
+            android:orientation="horizontal"
+            android:id="@+id/coachAndModelTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/dtw_time_text"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:hint="教练dtw时间"
+                android:textAlignment="center"
+                />
+            <TextView
+                android:id="@+id/dtw_time_text_Manual"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:hint="模板dtw时间"
+                android:textAlignment="center"
+                />
+
+        </LinearLayout>-->
+
+<!--        <LinearLayout
+            android:id="@+id/layout_Filename"
+            android:layout_below="@id/demonstration_Manual"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <EditText
+                android:layout_below="@+id/manualRecord"
+                android:id="@+id/fileName"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_height="50dp"
+                android:hint="请输入文件名"
+                android:background="@drawable/togglebutton"/>
+            <ToggleButton
+                android:id="@+id/manualRecord"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_height="50dp"
+                android:layout_below="@+id/demonstration_Manual"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/togglebutton"
+                android:text=""
+                android:textOff="开始记录"
+                android:textOn="结束记录" />
+        </LinearLayout>-->
+
+
+
+
+
+
+ <!--       <TextView
+            android:id="@+id/time_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/start_test"
+            android:text="时间测试："
+            android:textSize="36sp" />
+
+        <Button
+            android:id="@+id/minus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/time_textview"
+            android:text="减一"
+            android:textSize="36sp" />
+
+        <Button
+            android:id="@+id/clear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/time_textview"
+            android:text="清零"
+            android:textSize="36sp" />-->
+
+
+
+
+    </RelativeLayout>
+</ScrollView>

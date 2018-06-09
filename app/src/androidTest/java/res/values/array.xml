@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+        <!--  profile_array    -->
+        <string-array name="profile_array">
+            <item>@string/nickname</item>
+            <item>@string/sex</item>
+            <item>@string/height</item>
+            <item>@string/weight</item>
+        </string-array>
+
+        <string-array name="profile_array_default">
+             <item>@string/default_nickname</item>
+             <item>@string/default_sex</item>
+             <item>@string/default_height</item>
+             <item>@string/default_weight</item>
+         </string-array>
+
+
+    <!--  target_array    -->
+        <string-array name="target_array">
+            <item>@string/target_type</item>
+            <item>@string/target_sets</item>
+            <item>@string/target_times</item>
+        </string-array>
+
+        <string-array name="target_array_default">
+            <item>@string/default_target_type</item>
+            <item>@string/default_target_sets</item>
+            <item>@string/default_target_times</item>
+        </string-array>
+
+    <!-- action_type-->
+    <string-array name="action_type">
+        <item>@string/T0</item>
+        <item>@string/T1</item>
+        <item>@string/T2</item>
+        <item>@string/T3</item>
+        <item>@string/T4</item>
+        <item>@string/T5</item>
+        <item>@string/T6</item>
+        <item>@string/T7</item>
+        <item>@string/T8</item>
+        <item>@string/T9</item>
+        <item>@string/T10</item>
+
+    </string-array>
+</resources>

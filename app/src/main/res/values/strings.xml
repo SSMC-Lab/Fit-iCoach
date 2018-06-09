@@ -1,0 +1,48 @@
+<resources>
+    <string name="app_name">BodyFit</string>
+
+    <string name="tab_target">目标</string>
+    <string name="tab_exercise">训练</string>
+    <string name="tab_profile">我</string>
+
+    <!--exercise page-->
+    <string name="group">组:</string>
+    <string name="times">次：</string>
+    <string name="exercise_type">运动类型:</string>
+    <string name="start_doing">开始</string>
+
+    <!--profile page-->
+    <string name="nickname">昵称:</string>
+    <string name="sex">性别:</string>
+    <string name="height">身高(厘米):</string>
+    <string name="weight">体重(千克):</string>
+
+    <string name="default_nickname">游客</string>
+    <string name="default_sex">男</string>
+    <string name="default_height">170</string>
+    <string name="default_weight">55</string>
+
+    <!--target page-->
+    <string name="target_type">类型</string>
+    <string name="target_sets">组数:</string>
+    <string name="target_times">次数:</string>
+
+    <string name="default_target_type">未设置</string>
+    <string name="default_target_sets">0</string>
+    <string name="default_target_times">0</string>
+    <string name="default_target_clicktimes">0</string>
+    //对应增加，删除图片按钮
+
+    <!-- action_type-->
+    <string name="T0">未设置</string>
+    <string name="T1">平板杠铃卧推</string>
+    <string name="T2">平板哑铃飞鸟</string>
+    <string name="T3">平板哑铃卧推</string>
+    <string name="T4">上斜板哑铃飞鸟</string>
+    <string name="T5">阔背肌下拉</string>
+    <string name="T6">器械弯举</string>
+    <string name="T7">哑铃交替弯举</string>
+    <string name="T8">器械夹胸</string>
+    <string name="T9">上斜板哑铃卧推</string>
+    <string name="T10">十字夹胸</string>
+</resources>

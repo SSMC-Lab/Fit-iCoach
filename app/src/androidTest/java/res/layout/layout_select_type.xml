@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="15dp"
+        android:text=" "/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/blankText1"
+            android:text=" "
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"/>
+        <ImageButton
+            android:id="@+id/target_add"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/symbol_add"
+            android:layout_toRightOf="@id/blankText1"
+
+           />
+
+        <TextView
+            android:id="@+id/blankText2"
+            android:text=" "
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"/>
+        <ImageButton
+            android:id="@+id/target_del"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/symbol_del"
+            android:layout_toLeftOf="@id/blankText2"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:text=" "/>
+
+    <ListView
+        android:id="@+id/target_list1"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:divider="#cccccc"
+        android:dividerHeight="2px"
+        android:headerDividersEnabled="false"
+        android:footerDividersEnabled="false"
+        android:layout_gravity="center_horizontal"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:text=" "/>
+    <ListView
+        android:id="@+id/target_list2"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:divider="#cccccc"
+        android:dividerHeight="2px"
+        android:headerDividersEnabled="false"
+        android:footerDividersEnabled="false"
+        android:layout_gravity="center_horizontal"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:text=" "/>
+    <ListView
+        android:id="@+id/target_list3"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:divider="#cccccc"
+        android:dividerHeight="2px"
+        android:headerDividersEnabled="false"
+        android:footerDividersEnabled="false"
+        android:layout_gravity="center_horizontal"
+        />
+
+</LinearLayout>

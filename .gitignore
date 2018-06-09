@@ -1,0 +1,11 @@
+#these items are auto created By Android Studio
+.gradle
+/local.properties
+/.idea/workspace.xml
+/.idea/libraries
+.DS_Store
+/build
+/captures
+
+#these item are created By Monkey.D.XueJin
+/~$readme.docx

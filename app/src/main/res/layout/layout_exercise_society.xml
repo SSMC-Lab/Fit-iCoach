@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:id="@+id/exercise_society"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <fruitbasket.com.bodyfit.ui.TitleBar
+        android:id="@+id/title_bar_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+    </fruitbasket.com.bodyfit.ui.TitleBar>
+    <ListView
+        android:background="@drawable/society_background"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/listView" />
+
+
+</LinearLayout>

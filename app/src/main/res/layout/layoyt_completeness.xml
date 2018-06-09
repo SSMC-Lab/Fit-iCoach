@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="#fff"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#DCDCDC"/>
+    <TextView
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="本次训练：未完成"
+        android:textSize="25dp"
+        android:textColor="#383838"/>
+    <View
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#DCDCDC"/>
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="完成"
+        android:textSize="18dp"
+        android:textColor="@color/black"
+        android:background="@drawable/border"/>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+        <fruitbasket.com.bodyfit.ui.CircleProgressView
+            android:id="@+id/circle_a"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            tools:layout_editor_absoluteX="147dp"
+            tools:layout_editor_absoluteY="0dp" />
+
+        <fruitbasket.com.bodyfit.ui.CircleProgressView
+            android:id="@+id/circle_b"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_marginLeft="40dp" />
+
+        <fruitbasket.com.bodyfit.ui.CircleProgressView
+            android:id="@+id/circle_c"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_marginLeft="40dp" />
+    </LinearLayout>
+    <View
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#DCDCDC"/>
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="预期效果"
+        android:textSize="18dp"
+        android:textColor="@color/black"
+        android:background="@drawable/border"/>
+    <TextView
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="提高力量，锻炼部位：肱肌与斜方肌上束。"
+        android:textColor="@color/black"
+        android:textSize="15dp"/>
+</LinearLayout>

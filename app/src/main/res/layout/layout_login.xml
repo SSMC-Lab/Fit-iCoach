@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:id="@+id/screen"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/behind_background"
+    android:scrollbars="none">
+    <RelativeLayout
+        android:isScrollContainer="true"
+        android:background="@drawable/behind_background"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/welcome_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp">
+
+            <TextView
+                android:id="@+id/welcome1_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="15dp"
+                android:text="Welcome To BodyFit"
+                android:textSize="25dp"
+                />
+
+            <TextView
+                android:id="@+id/welcome2_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:text="Please login first"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/input_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="170dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:showDividers="beginning"
+            >
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="#ffffff"
+                />
+            <EditText
+                android:id="@+id/editText_userName"
+                android:drawableLeft="@drawable/login_user"
+                android:drawablePadding="18dp"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:singleLine="true"
+                android:background="#F5F5F5"
+                android:hint="请输入您的用户名"
+                android:textSize="15dp"
+
+                />
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="#ffffff"
+                />
+            <EditText
+                android:id="@+id/edit_userPassword"
+                android:drawableLeft="@drawable/password"
+                android:drawablePadding="18dp"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:singleLine="true"
+                android:background="#F5F5F5"
+                android:hint="请输入您的密码"
+                android:textSize="15dp"
+                />
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="#ffffff"
+                />
+
+            <Button
+                android:id="@+id/Button_login"
+                android:layout_marginTop="23dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="290dp"
+                android:layout_height="38dp"
+                android:text="登录"
+                android:textColor="#F5F5F5"
+                android:textSize="17dp"
+                android:background="#1E90FF"
+                />
+
+            <Button
+                android:id="@+id/Button_register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="190dp"
+                android:text="注册账号"
+                android:textColor="#F4A460"
+                android:background="#00000000"
+                />
+        </LinearLayout>
+
+    </RelativeLayout>
+</ScrollView>

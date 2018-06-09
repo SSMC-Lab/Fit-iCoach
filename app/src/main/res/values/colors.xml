@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <drawable name="behind_background">#DCDCDC</drawable>
+    <drawable name="flow_background">#FFFFFF</drawable>
+    <drawable name="before_exerciseType">#00F5FF</drawable>
+    <color name="black">#000000</color>
+    <color name="society_name">#4F4F4F</color>
+    <color name="society_content">#828282</color>
+    <color name="white">#ffffffff</color>
+    <color name="transparent_white">#66ffffff</color>
+    <color name="white_light">#b3ffffff</color>
+    <color name="light_white">#f9f9f9</color>
+    <color name="transparent">#00000000</color>
+    <color name="red">#fe6d6a</color>
+    <color name="red_dark">#b44d4b</color>
+    <color name="green">#89D767</color>
+    <color name="green_dark">#5ca73c</color>
+    <color name="color_f9f9f9">#f9f9f9</color>
+    <color name="color_c6c6c6">#c6c6c6</color>
+    <color name="color_c5181818">#c5181818</color>
+    <drawable name="society_background">#F5F5F5</drawable>
+
+    <color name="colorPrimary">#232426</color>
+    <color name="colorPrimaryDark">#232426</color>
+    <color name="colorAccent">#10d21c</color>
+
+    <!--刷新头头-->
+    <color name="ptr_header_bg">#323232</color>
+    <color name="action_bar_bg">#232426</color>
+    <color name="stroke_bg">#2b2b2b</color>
+
+    <!--刷新尾部-->
+    <color name="ptr_footer_tx">#8e8e8e</color>
+
+    <!--朋友圈色值-->
+    <color name="nick">#517fae</color>
+    <color name="item_bottom_text">#8e8e8e</color>
+    <color name="item_showmore_click">#c6c6c6</color>
+    <color name="line_bg">#e5e5e5</color>
+
+    <!--点赞popup色值-->
+    <color name="comment_popup_bg">#4c5154</color>
+    <color name="comment_popup_tx_bg">#c7c7c7</color>
+
+    <!--文字颜色-->
+    <color name="text_hint_color">#bababa</color>
+    <color name="normal_font_color">#1A1A1A</color>
+
+    <!--other-->
+    <color name="wechat_green_bg">#10ba0c</color>
+    <color name="wechat_green_transparent">#7a10d21c</color>
+    <color name="wechat_green_bg_click">#5eec67</color>
+    <color name="comment_click_bg">#CCD2DF</color>
+    <color name="delete_click_bg">#EAEAEA</color>
+
+    <!--图片点击颜色-->
+    <color name="img_foregroundColor">#85414141</color>
+
+    <!--popup背景蒙层-->
+    <color name="popup_background">#80030303</color>
+
+    <!--分割线-->
+    <color name="gray_divider">#d7dce1</color>
+    <color name="dark_gray_divider">#bbc2ca</color>
+    <color name="timeline_background">#f4f6f8</color>
+
+    <color name="round_rect_bg">#f8f8f8</color>
+
+    <!--文字-->
+    <color name="text_black">#1A1A1A</color>
+    <color name="text_gray">#bbc2ca</color>
+    <color name="text_dark_gray">#9fa3a7</color>
+    <color name="color_black1">#333333</color>
+    <color name="color_black2">#666666</color>
+    <color name="color_black3">#888888</color>
+
+</resources>

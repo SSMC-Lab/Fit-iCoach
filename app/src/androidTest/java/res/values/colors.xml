@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <drawable name="behind_background">#DCDCDC</drawable>
+    <drawable name="flow_background">#FFFFFF</drawable>
+    <drawable name="before_exerciseType">#00F5FF</drawable>
+    <color name="black">#000000</color>
+    <color name="society_name">#4F4F4F</color>
+    <color name="society_content">#828282</color>
+    <drawable name="society_background">#F5F5F5</drawable>
+</resources>

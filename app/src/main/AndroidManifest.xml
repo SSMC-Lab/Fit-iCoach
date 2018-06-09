@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="fruitbasket.com.bodyfit"
+    android:revisionCode="3"
+    android:versionCode="3">
+
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:name=".MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".ui.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.SelectExeActivity" />
+        <activity android:name=".ui.LoginActivity" />
+
+        <service
+            android:name=".bluetooth.BluetoothService"
+            android:enabled="true" />
+        <service
+            android:name=".test.TestService"
+            android:enabled="true" />
+
+        <activity android:name=".ui.ActionListActivity" />
+        <activity android:name=".ui.BarbellPress" />
+        <activity android:name=".ui.ActionIntroductionActivity" />
+        <activity android:name=".ui.DataTableActivity" />
+        <activity android:name=".ui.CompletenessActivity" />
+        <activity android:name=".ui.DietAdviceSelectActivity" />
+        <activity android:name=".ui.DietAdviceActivity" />
+        <activity android:name=".ExerciseSociety.PublishActivity" />
+    </application>
+
+</manifest>

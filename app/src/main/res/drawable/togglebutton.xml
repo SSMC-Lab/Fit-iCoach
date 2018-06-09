@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:state_checked="true">
+        <shape>
+            <solid android:color="#87CEFA"/>
+            <!-- 矩形的圆角弧度 -->
+            <corners android:radius="120dp" />
+            <stroke
+                android:width="2dp"
+                android:dashWidth="1dp"
+                android:dashGap="0dp"
+                android:color="#fff" />
+        </shape>
+    </item>
+
+    <item android:state_checked="false">
+        <shape>
+            <solid android:color="#87CEFA"/>
+            <!-- 矩形的圆角弧度 -->
+            <corners android:radius="120dp" />
+            <stroke
+                android:width="2dp"
+                android:dashWidth="1dp"
+                android:dashGap="0dp"
+                android:color="#ffff" />
+        </shape>
+    </item>
+</selector>

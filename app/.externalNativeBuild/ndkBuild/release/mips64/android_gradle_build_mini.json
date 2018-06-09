@@ -1,0 +1,17 @@
+{
+  "buildFiles": [
+    "C:\\Users\\lkeye\\AndroidStudioProjects\\BodyFit10220049\\app\\src\\main\\jni\\Android.mk",
+    "C:\\Users\\lkeye\\AndroidStudioProjects\\BodyFit10220049\\app\\src\\main\\jni\\Application.mk"
+  ],
+  "cleanCommands": [
+    "C:\\Users\\lkeye\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\ndk-build.cmd NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003dC:\\Users\\lkeye\\AndroidStudioProjects\\BodyFit10220049\\app\\src\\main\\jni\\Android.mk NDK_APPLICATION_MK\u003dC:\\Users\\lkeye\\AndroidStudioProjects\\BodyFit10220049\\app\\src\\main\\jni\\Application.mk APP_ABI\u003dmips64 NDK_ALL_ABIS\u003dmips64 NDK_DEBUG\u003d0 APP_PLATFORM\u003dandroid-21 NDK_OUT\u003dC:/Users/lkeye/AndroidStudioProjects/BodyFit10220049/app/build/intermediates/ndkBuild/release/obj NDK_LIBS_OUT\u003dC:\\Users\\lkeye\\AndroidStudioProjects\\BodyFit10220049\\app\\build\\intermediates\\ndkBuild\\release\\lib clean"
+  ],
+  "libraries": {
+    "jni-dtw-release-mips64": {
+      "artifactName": "jni-dtw",
+      "buildCommand": "C:\\Users\\lkeye\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\ndk-build.cmd NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003dC:\\Users\\lkeye\\AndroidStudioProjects\\BodyFit10220049\\app\\src\\main\\jni\\Android.mk NDK_APPLICATION_MK\u003dC:\\Users\\lkeye\\AndroidStudioProjects\\BodyFit10220049\\app\\src\\main\\jni\\Application.mk APP_ABI\u003dmips64 NDK_ALL_ABIS\u003dmips64 NDK_DEBUG\u003d0 APP_PLATFORM\u003dandroid-21 NDK_OUT\u003dC:/Users/lkeye/AndroidStudioProjects/BodyFit10220049/app/build/intermediates/ndkBuild/release/obj NDK_LIBS_OUT\u003dC:\\Users\\lkeye\\AndroidStudioProjects\\BodyFit10220049\\app\\build\\intermediates\\ndkBuild\\release\\lib C:/Users/lkeye/AndroidStudioProjects/BodyFit10220049/app/build/intermediates/ndkBuild/release/obj/local/mips64/libjni-dtw.so",
+      "abi": "mips64",
+      "output": "C:\\Users\\lkeye\\AndroidStudioProjects\\BodyFit10220049\\app\\build\\intermediates\\ndkBuild\\release\\obj\\local\\mips64\\libjni-dtw.so"
+    }
+  }
+}

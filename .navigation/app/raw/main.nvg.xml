@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<navigationModel
+  ns = "http://schemas.android.com?import=com.android.tools.idea.editors.navigation.model.*">
+  <locations  
+    class = "java.util.ArrayList">
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "fruitbasket.com.bodyfit.ui.SelectExeActivity"/>
+      <point      
+        x = "1896"      
+        y = "404"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "fruitbasket.com.bodyfit.ui.MainActivity"/>
+      <point      
+        x = "352"      
+        y = "1104"/>
+    </statePointEntry>
+  </locations>
+</navigationModel>

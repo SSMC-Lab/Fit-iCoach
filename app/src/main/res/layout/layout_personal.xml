@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/behind_background"
+    android:scrollbars="none">
+<LinearLayout
+    android:isScrollContainer="true"
+    android:background="@drawable/behind_background"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+        <RelativeLayout
+            android:layout_marginTop="20dp"
+            android:id="@+id/personalInformation"
+            android:background="@drawable/flow_background"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!--<ImageView
+                android:src="@drawable/touxiang"
+                android:layout_margin="5dp"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:id="@+id/headCulpture"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true" />-->
+            <pl.droidsonroids.gif.GifImageView
+                android:id="@+id/headCulpture"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/touxiang2"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"/>
+
+            <TextView
+                android:textColor="@color/black"
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="User"
+                android:id="@+id/name"
+                android:layout_alignParentTop="true"
+                android:textSize="15dp"
+                android:layout_toEndOf="@+id/headCulpture"
+                android:layout_marginTop="25dp" />
+
+            <TextView
+                android:layout_marginTop="5dp"
+                android:layout_alignLeft="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="男"
+                android:id="@+id/sex"
+                android:layout_below="@+id/name"
+                android:textColor="@color/black"
+                android:layout_toEndOf="@+id/headCulpture" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="30dp"
+                android:text=">"
+                android:layout_marginRight="10dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true" />
+        </RelativeLayout>
+
+
+    <Button
+        android:id="@+id/history"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button_style"
+        android:drawableLeft="@drawable/history"
+        android:drawablePadding="13dp"
+        android:drawableRight="@drawable/button_picture"
+        android:gravity="center_vertical"
+        android:text="历史记录" />
+    <Button
+        android:drawableLeft="@drawable/unfamiliar_action"
+        android:drawablePadding="20dp"
+        android:gravity="center_vertical"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_marginTop="0.1dp"
+        android:text="陌生动作"
+        android:background="@drawable/button_style"
+        android:id="@+id/unfamiliarExercise"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        android:drawableLeft="@drawable/fitness_assessment"
+        android:drawableRight="@drawable/button_picture"
+        android:drawablePadding="20dp"
+        android:gravity="center_vertical"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_marginTop="20dp"
+        android:text="体能评估"
+        android:background="@drawable/button_style"
+        android:id="@+id/fitnessAssessment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        android:drawableLeft="@drawable/action_advice"
+        android:drawablePadding="20dp"
+        android:gravity="center_vertical"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_marginTop="0.1dp"
+        android:text="健身建议"
+        android:background="@drawable/button_style"
+        android:id="@+id/fitnessAdvice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        android:drawableLeft="@drawable/diet_advice"
+        android:drawablePadding="20dp"
+        android:gravity="center_vertical"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_marginTop="0.1dp"
+        android:text="饮食建议"
+        android:background="@drawable/button_style"
+        android:id="@+id/dietAdvice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>
+</ScrollView>

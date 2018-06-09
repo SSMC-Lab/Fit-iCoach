@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFFFFF">
+
+    <ImageView
+        android:id="@+id/action_image"
+        android:layout_marginLeft="160dp"
+        android:layout_width="match_parent"
+        android:layout_height="148dp"
+        android:src="@drawable/action8"/>
+
+    <TextView
+        android:id="@+id/action_text1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="15dp"
+        android:textColor="#000000"
+        android:textSize="18dp" />
+    <TextView
+        android:id="@+id/action_text2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="120dp"
+        android:layout_marginLeft="15dp"
+        android:textSize="13dp"
+        android:textColor="#000000" />
+</FrameLayout>

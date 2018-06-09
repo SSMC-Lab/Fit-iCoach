@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/behind_background"
+    android:scrollbars="none">
+
+
+<LinearLayout
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="#fff"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <TextView
+        android:id="@+id/data_score_name"
+        android:text="总体评价"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#2F2F4F"
+        android:textSize="20dp"/>
+    <win.smartown.android.library.tableLayout.FreeScrollView
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <win.smartown.android.library.tableLayout.TableLayout
+            android:id="@+id/score_table"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            app:tableTextSize="10dp"
+            app:tableTextColorSelected="#fff"
+            app:tableTextColor="#333"
+            app:tableRowHeight="70dp"
+            app:tableDividerSize="1px"
+            app:tableDividerColor="#ddd"
+            app:tableColumnPadding="30dp"
+            app:backgroundColorSelected="@color/colorAccent"
+            android:background="@android:color/white"
+            />
+    </win.smartown.android.library.tableLayout.FreeScrollView>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="#ddd"/>
+
+    <TextView
+        android:id="@+id/data_action_name"
+        android:text="体能评估"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#2F2F4F"
+        android:textSize="20dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="#ddd"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#fff">
+
+        <TextView
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:text="" />
+        <View
+            android:layout_width="1px"
+            android:layout_height="50dp"
+            android:background="#ddd"/>
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:text="持续时间"
+            android:gravity="center"
+            android:textColor="#2F2F4F"
+            android:textSize="19dp"/>
+        <View
+            android:layout_width="1px"
+            android:layout_height="50dp"
+            android:background="#ddd"/>
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:text="训练强度"
+            android:gravity="center"
+            android:textColor="#2F2F4F"
+            android:textSize="19dp"/>
+    </LinearLayout>
+
+<win.smartown.android.library.tableLayout.FreeScrollView
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <win.smartown.android.library.tableLayout.TableLayout
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        app:tableTextSize="10dp"
+        app:tableTextColorSelected="#fff"
+        app:tableTextColor="#333"
+        app:tableRowHeight="46dp"
+        app:tableDividerSize="1px"
+        app:tableDividerColor="#ddd"
+        app:tableColumnPadding="15dp"
+        app:backgroundColorSelected="@color/colorAccent"
+        android:background="@android:color/white"
+        android:id="@+id/main_table"/>
+
+</win.smartown.android.library.tableLayout.FreeScrollView>
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:id="@+id/data_action_kurtosis"
+        android:text="峰态系数"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#2F2F4F"
+        android:textSize="20dp"/>
+
+    <win.smartown.android.library.tableLayout.FreeScrollView
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <win.smartown.android.library.tableLayout.TableLayout
+            android:id="@+id/kurtosis_table"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            app:tableTextSize="10dp"
+            app:tableTextColorSelected="#fff"
+            app:tableTextColor="#333"
+            app:tableRowHeight="46dp"
+            app:tableDividerSize="1px"
+            app:tableDividerColor="#ddd"
+            app:tableColumnPadding="15dp"
+            app:backgroundColorSelected="@color/colorAccent"
+            android:background="@android:color/white"
+            />
+
+    </win.smartown.android.library.tableLayout.FreeScrollView>
+
+   <!-- <TextView
+        android:layout_marginTop="20dp"
+        android:text="持续性"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#2F2F4F"
+        android:textSize="20dp"/>
+
+    <win.smartown.android.library.tableLayout.FreeScrollView
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <win.smartown.android.library.tableLayout.TableLayout
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            app:tableTextSize="10dp"
+            app:tableTextColorSelected="#fff"
+            app:tableTextColor="#333"
+            app:tableRowHeight="46dp"
+            app:tableDividerSize="1px"
+            app:tableDividerColor="#ddd"
+            app:tableColumnPadding="15dp"
+            app:backgroundColorSelected="@color/colorAccent"
+            android:background="@android:color/white"
+            android:id="@+id/intensity_table"/>
+
+    </win.smartown.android.library.tableLayout.FreeScrollView>-->
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:text="EMD/组1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#2F2F4F"
+        android:textSize="20dp"/>
+
+    <com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/bar_chart1"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"/>
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:text="EMD/组2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#2F2F4F"
+        android:textSize="20dp"/>
+    <com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/bar_chart2"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"/>
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:text="EMD/组3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#2F2F4F"
+        android:textSize="20dp"/>
+    <com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/bar_chart3"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"/>
+</LinearLayout>
+</ScrollView>
