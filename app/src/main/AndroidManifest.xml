@@ -25,7 +25,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.SelectExeActivity" />
-        <activity android:name=".ui.LoginActivity" />
+        <activity android:name=".Login.LoginActivity" />
 
         <service
             android:name=".bluetooth.BluetoothService"
@@ -39,13 +39,18 @@
         <activity android:name=".ui.ActionIntroductionActivity" />
         <activity android:name=".ui.DataTableActivity" />
         <activity android:name=".ui.CompletenessActivity" />
-        <activity android:name=".ui.DietAdviceSelectActivity" />
-        <activity android:name=".ui.DietAdviceActivity" />
+        <activity android:name=".DietRecommendations.DietAdviceSelectActivity" />
+        <activity android:name=".DietRecommendations.DietAdviceActivity" />
         <activity android:name=".ExerciseSociety.PublishActivity" />
         <activity
             android:name="com.lidong.photopicker.PhotoPickerActivity"
-            android:configChanges="orientation|screenSize"/>
+            android:configChanges="orientation|screenSize" />
         <activity android:name="com.lidong.photopicker.PhotoPreviewActivity" />
+        <activity android:name=".DietRecommendations.FoodScoreActivity" />
+        <activity
+            android:name=".Login.RegisterActivity"
+            android:theme="@style/Translucent"></activity>
+        <activity android:name=".TimeLine.TimeLineActivity"></activity>
     </application>
 
 </manifest>

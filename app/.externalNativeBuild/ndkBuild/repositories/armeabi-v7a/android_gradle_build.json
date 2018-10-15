@@ -1,0 +1,69 @@
+{
+  "buildFiles": [
+    "E:\\Android\\BodyFitOriginal\\app\\src\\main\\jni\\Android.mk",
+    "E:\\Android\\BodyFitOriginal\\app\\src\\main\\jni\\Application.mk"
+  ],
+  "cleanCommands": [
+    "C:\\Users\\lkeye\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\ndk-build.cmd NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003dE:\\Android\\BodyFitOriginal\\app\\src\\main\\jni\\Android.mk NDK_APPLICATION_MK\u003dE:\\Android\\BodyFitOriginal\\app\\src\\main\\jni\\Application.mk APP_ABI\u003darmeabi-v7a NDK_ALL_ABIS\u003darmeabi-v7a NDK_DEBUG\u003d0 APP_PLATFORM\u003dandroid-21 NDK_OUT\u003dE:/Android/BodyFitOriginal/app/build/intermediates/ndkBuild/repositories/obj NDK_LIBS_OUT\u003dE:\\Android\\BodyFitOriginal\\app\\build\\intermediates\\ndkBuild\\repositories\\lib clean"
+  ],
+  "libraries": {
+    "jni-dtw-repositories-armeabi-v7a": {
+      "buildCommand": "C:\\Users\\lkeye\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\ndk-build.cmd NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003dE:\\Android\\BodyFitOriginal\\app\\src\\main\\jni\\Android.mk NDK_APPLICATION_MK\u003dE:\\Android\\BodyFitOriginal\\app\\src\\main\\jni\\Application.mk APP_ABI\u003darmeabi-v7a NDK_ALL_ABIS\u003darmeabi-v7a NDK_DEBUG\u003d0 APP_PLATFORM\u003dandroid-21 NDK_OUT\u003dE:/Android/BodyFitOriginal/app/build/intermediates/ndkBuild/repositories/obj NDK_LIBS_OUT\u003dE:\\Android\\BodyFitOriginal\\app\\build\\intermediates\\ndkBuild\\repositories\\lib E:/Android/BodyFitOriginal/app/build/intermediates/ndkBuild/repositories/obj/local/armeabi-v7a/libjni-dtw.so",
+      "toolchain": "toolchain-armeabi-v7a",
+      "abi": "armeabi-v7a",
+      "artifactName": "jni-dtw",
+      "files": [
+        {
+          "src": "E:\\Android\\BodyFitOriginal\\app\\src\\main\\jni\\ColMajorCell.cpp",
+          "flags": "-gcc-toolchain C:/Users/lkeye/AppData/Local/Android/Sdk/ndk-bundle/build//../toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64 -fpic -ffunction-sections -funwind-tables -fstack-protector-strong -Wno-invalid-command-line-argument -Wno-unused-command-line-argument -no-canonical-prefixes -fno-integrated-as -g -target armv7-none-linux-androideabi21 -march\u003darmv7-a -mfloat-abi\u003dsoftfp -mfpu\u003dvfpv3-d16 -fno-exceptions -fno-rtti -mthumb -Os -DNDEBUG -IC:/Users/lkeye/AppData/Local/Android/Sdk/ndk-bundle/build//../sources/cxx-stl/stlport/stlport -IC:/Users/lkeye/AppData/Local/Android/Sdk/ndk-bundle/build//../sources/cxx-stl//gabi++/include -IE:/Android/BodyFitOriginal/app/src/main/jni -fexceptions -frtti -std\u003dc++11 -fpermissive -DANDROID -D__ANDROID_API__\u003d21 -Wa,--noexecstack -Wformat -Werror\u003dformat-security -frtti --sysroot C:/Users/lkeye/AppData/Local/Android/Sdk/ndk-bundle/build//../sysroot -isystem C:/Users/lkeye/AppData/Local/Android/Sdk/ndk-bundle/build//../sysroot/usr/include/arm-linux-androideabi"
+        },
+        {
+          "src": "E:\\Android\\BodyFitOriginal\\app\\src\\main\\jni\\FastDTW.cpp",
+          "flags": "-gcc-toolchain C:/Users/lkeye/AppData/Local/Android/Sdk/ndk-bundle/build//../toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64 -fpic -ffunction-sections -funwind-tables -fstack-protector-strong -Wno-invalid-command-line-argument -Wno-unused-command-line-argument -no-canonical-prefixes -fno-integrated-as -g -target armv7-none-linux-androideabi21 -march\u003darmv7-a -mfloat-abi\u003dsoftfp -mfpu\u003dvfpv3-d16 -fno-exceptions -fno-rtti -mthumb -Os -DNDEBUG -IC:/Users/lkeye/AppData/Local/Android/Sdk/ndk-bundle/build//../sources/cxx-stl/stlport/stlport -IC:/Users/lkeye/AppData/Local/Android/Sdk/ndk-bundle/build//../sources/cxx-stl//gabi++/include -IE:/Android/BodyFitOriginal/app/src/main/jni -fexceptions -frtti -std\u003dc++11 -fpermissive -DANDROID -D__ANDROID_API__\u003d21 -Wa,--noexecstack -Wformat -Werror\u003dformat-security -frtti --sysroot C:/Users/lkeye/AppData/Local/Android/Sdk/ndk-bundle/build//../sysroot -isystem C:/Users/lkeye/AppData/Local/Android/Sdk/ndk-bundle/build//../sysroot/usr/include/arm-linux-androideabi"
+        },
+        {
+          "src": "E:\\Android\\BodyFitOriginal\\app\\src\\main\\jni\\SearchWindow.cpp",
+          "flags": "-gcc-toolchain C:/Users/lkeye/AppData/Local/Android/Sdk/ndk-bundle/build//../toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64 -fpic -ffunction-sections -funwind-tables -fstack-protector-strong -Wno-invalid-command-line-argument -Wno-unused-command-line-argument -no-canonical-prefixes -fno-integrated-as -g -target armv7-none-linux-androideabi21 -march\u003darmv7-a -mfloat-abi\u003dsoftfp -mfpu\u003dvfpv3-d16 -fno-exceptions -fno-rtti -mthumb -Os -DNDEBUG -IC:/Users/lkeye/AppData/Local/Android/Sdk/ndk-bundle/build//../sources/cxx-stl/stlport/stlport -IC:/Users/lkeye/AppData/Local/Android/Sdk/ndk-bundle/build//../sources/cxx-stl//gabi++/include -IE:/Android/BodyFitOriginal/app/src/main/jni -fexceptions -frtti -std\u003dc++11 -fpermissive -DANDROID -D__ANDROID_API__\u003d21 -Wa,--noexecstack -Wformat -Werror\u003dformat-security -frtti --sysroot C:/Users/lkeye/AppData/Local/Android/Sdk/ndk-bundle/build//../sysroot -isystem C:/Users/lkeye/AppData/Local/Android/Sdk/ndk-bundle/build//../sysroot/usr/include/arm-linux-androideabi"
+        },
+        {
+          "src": "E:\\Android\\BodyFitOriginal\\app\\src\\main\\jni\\WarpPath.cpp",
+          "flags": "-gcc-toolchain C:/Users/lkeye/AppData/Local/Android/Sdk/ndk-bundle/build//../toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64 -fpic -ffunction-sections -funwind-tables -fstack-protector-strong -Wno-invalid-command-line-argument -Wno-unused-command-line-argument -no-canonical-prefixes -fno-integrated-as -g -target armv7-none-linux-androideabi21 -march\u003darmv7-a -mfloat-abi\u003dsoftfp -mfpu\u003dvfpv3-d16 -fno-exceptions -fno-rtti -mthumb -Os -DNDEBUG -IC:/Users/lkeye/AppData/Local/Android/Sdk/ndk-bundle/build//../sources/cxx-stl/stlport/stlport -IC:/Users/lkeye/AppData/Local/Android/Sdk/ndk-bundle/build//../sources/cxx-stl//gabi++/include -IE:/Android/BodyFitOriginal/app/src/main/jni -fexceptions -frtti -std\u003dc++11 -fpermissive -DANDROID -D__ANDROID_API__\u003d21 -Wa,--noexecstack -Wformat -Werror\u003dformat-security -frtti --sysroot C:/Users/lkeye/AppData/Local/Android/Sdk/ndk-bundle/build//../sysroot -isystem C:/Users/lkeye/AppData/Local/Android/Sdk/ndk-bundle/build//../sysroot/usr/include/arm-linux-androideabi"
+        },
+        {
+          "src": "E:\\Android\\BodyFitOriginal\\app\\src\\main\\jni\\analysis.cpp",
+          "flags": "-gcc-toolchain C:/Users/lkeye/AppData/Local/Android/Sdk/ndk-bundle/build//../toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64 -fpic -ffunction-sections -funwind-tables -fstack-protector-strong -Wno-invalid-command-line-argument -Wno-unused-command-line-argument -no-canonical-prefixes -fno-integrated-as -g -target armv7-none-linux-androideabi21 -march\u003darmv7-a -mfloat-abi\u003dsoftfp -mfpu\u003dvfpv3-d16 -fno-exceptions -fno-rtti -mthumb -Os -DNDEBUG -IC:/Users/lkeye/AppData/Local/Android/Sdk/ndk-bundle/build//../sources/cxx-stl/stlport/stlport -IC:/Users/lkeye/AppData/Local/Android/Sdk/ndk-bundle/build//../sources/cxx-stl//gabi++/include -IE:/Android/BodyFitOriginal/app/src/main/jni -fexceptions -frtti -std\u003dc++11 -fpermissive -DANDROID -D__ANDROID_API__\u003d21 -Wa,--noexecstack -Wformat -Werror\u003dformat-security -frtti --sysroot C:/Users/lkeye/AppData/Local/Android/Sdk/ndk-bundle/build//../sysroot -isystem C:/Users/lkeye/AppData/Local/Android/Sdk/ndk-bundle/build//../sysroot/usr/include/arm-linux-androideabi"
+        },
+        {
+          "src": "E:\\Android\\BodyFitOriginal\\app\\src\\main\\jni\\dtw.cpp",
+          "flags": "-gcc-toolchain C:/Users/lkeye/AppData/Local/Android/Sdk/ndk-bundle/build//../toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64 -fpic -ffunction-sections -funwind-tables -fstack-protector-strong -Wno-invalid-command-line-argument -Wno-unused-command-line-argument -no-canonical-prefixes -fno-integrated-as -g -target armv7-none-linux-androideabi21 -march\u003darmv7-a -mfloat-abi\u003dsoftfp -mfpu\u003dvfpv3-d16 -fno-exceptions -fno-rtti -mthumb -Os -DNDEBUG -IC:/Users/lkeye/AppData/Local/Android/Sdk/ndk-bundle/build//../sources/cxx-stl/stlport/stlport -IC:/Users/lkeye/AppData/Local/Android/Sdk/ndk-bundle/build//../sources/cxx-stl//gabi++/include -IE:/Android/BodyFitOriginal/app/src/main/jni -fexceptions -frtti -std\u003dc++11 -fpermissive -DANDROID -D__ANDROID_API__\u003d21 -Wa,--noexecstack -Wformat -Werror\u003dformat-security -frtti --sysroot C:/Users/lkeye/AppData/Local/Android/Sdk/ndk-bundle/build//../sysroot -isystem C:/Users/lkeye/AppData/Local/Android/Sdk/ndk-bundle/build//../sysroot/usr/include/arm-linux-androideabi"
+        },
+        {
+          "src": "E:\\Android\\BodyFitOriginal\\app\\src\\main\\jni\\dtw_Impl.cpp",
+          "flags": "-gcc-toolchain C:/Users/lkeye/AppData/Local/Android/Sdk/ndk-bundle/build//../toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64 -fpic -ffunction-sections -funwind-tables -fstack-protector-strong -Wno-invalid-command-line-argument -Wno-unused-command-line-argument -no-canonical-prefixes -fno-integrated-as -g -target armv7-none-linux-androideabi21 -march\u003darmv7-a -mfloat-abi\u003dsoftfp -mfpu\u003dvfpv3-d16 -fno-exceptions -fno-rtti -mthumb -Os -DNDEBUG -IC:/Users/lkeye/AppData/Local/Android/Sdk/ndk-bundle/build//../sources/cxx-stl/stlport/stlport -IC:/Users/lkeye/AppData/Local/Android/Sdk/ndk-bundle/build//../sources/cxx-stl//gabi++/include -IE:/Android/BodyFitOriginal/app/src/main/jni -fexceptions -frtti -std\u003dc++11 -fpermissive -DANDROID -D__ANDROID_API__\u003d21 -Wa,--noexecstack -Wformat -Werror\u003dformat-security -frtti --sysroot C:/Users/lkeye/AppData/Local/Android/Sdk/ndk-bundle/build//../sysroot -isystem C:/Users/lkeye/AppData/Local/Android/Sdk/ndk-bundle/build//../sysroot/usr/include/arm-linux-androideabi"
+        },
+        {
+          "src": "E:\\Android\\BodyFitOriginal\\app\\src\\main\\jni\\emd.cpp",
+          "flags": "-gcc-toolchain C:/Users/lkeye/AppData/Local/Android/Sdk/ndk-bundle/build//../toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64 -fpic -ffunction-sections -funwind-tables -fstack-protector-strong -Wno-invalid-command-line-argument -Wno-unused-command-line-argument -no-canonical-prefixes -fno-integrated-as -g -target armv7-none-linux-androideabi21 -march\u003darmv7-a -mfloat-abi\u003dsoftfp -mfpu\u003dvfpv3-d16 -fno-exceptions -fno-rtti -mthumb -Os -DNDEBUG -IC:/Users/lkeye/AppData/Local/Android/Sdk/ndk-bundle/build//../sources/cxx-stl/stlport/stlport -IC:/Users/lkeye/AppData/Local/Android/Sdk/ndk-bundle/build//../sources/cxx-stl//gabi++/include -IE:/Android/BodyFitOriginal/app/src/main/jni -fexceptions -frtti -std\u003dc++11 -fpermissive -DANDROID -D__ANDROID_API__\u003d21 -Wa,--noexecstack -Wformat -Werror\u003dformat-security -frtti --sysroot C:/Users/lkeye/AppData/Local/Android/Sdk/ndk-bundle/build//../sysroot -isystem C:/Users/lkeye/AppData/Local/Android/Sdk/ndk-bundle/build//../sysroot/usr/include/arm-linux-androideabi"
+        },
+        {
+          "src": "E:\\Android\\BodyFitOriginal\\app\\src\\main\\jni\\emd_interface.cpp",
+          "flags": "-gcc-toolchain C:/Users/lkeye/AppData/Local/Android/Sdk/ndk-bundle/build//../toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64 -fpic -ffunction-sections -funwind-tables -fstack-protector-strong -Wno-invalid-command-line-argument -Wno-unused-command-line-argument -no-canonical-prefixes -fno-integrated-as -g -target armv7-none-linux-androideabi21 -march\u003darmv7-a -mfloat-abi\u003dsoftfp -mfpu\u003dvfpv3-d16 -fno-exceptions -fno-rtti -mthumb -Os -DNDEBUG -IC:/Users/lkeye/AppData/Local/Android/Sdk/ndk-bundle/build//../sources/cxx-stl/stlport/stlport -IC:/Users/lkeye/AppData/Local/Android/Sdk/ndk-bundle/build//../sources/cxx-stl//gabi++/include -IE:/Android/BodyFitOriginal/app/src/main/jni -fexceptions -frtti -std\u003dc++11 -fpermissive -DANDROID -D__ANDROID_API__\u003d21 -Wa,--noexecstack -Wformat -Werror\u003dformat-security -frtti --sysroot C:/Users/lkeye/AppData/Local/Android/Sdk/ndk-bundle/build//../sysroot -isystem C:/Users/lkeye/AppData/Local/Android/Sdk/ndk-bundle/build//../sysroot/usr/include/arm-linux-androideabi"
+        },
+        {
+          "src": "E:\\Android\\BodyFitOriginal\\app\\src\\main\\jni\\test.cpp",
+          "flags": "-gcc-toolchain C:/Users/lkeye/AppData/Local/Android/Sdk/ndk-bundle/build//../toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64 -fpic -ffunction-sections -funwind-tables -fstack-protector-strong -Wno-invalid-command-line-argument -Wno-unused-command-line-argument -no-canonical-prefixes -fno-integrated-as -g -target armv7-none-linux-androideabi21 -march\u003darmv7-a -mfloat-abi\u003dsoftfp -mfpu\u003dvfpv3-d16 -fno-exceptions -fno-rtti -mthumb -Os -DNDEBUG -IC:/Users/lkeye/AppData/Local/Android/Sdk/ndk-bundle/build//../sources/cxx-stl/stlport/stlport -IC:/Users/lkeye/AppData/Local/Android/Sdk/ndk-bundle/build//../sources/cxx-stl//gabi++/include -IE:/Android/BodyFitOriginal/app/src/main/jni -fexceptions -frtti -std\u003dc++11 -fpermissive -DANDROID -D__ANDROID_API__\u003d21 -Wa,--noexecstack -Wformat -Werror\u003dformat-security -frtti --sysroot C:/Users/lkeye/AppData/Local/Android/Sdk/ndk-bundle/build//../sysroot -isystem C:/Users/lkeye/AppData/Local/Android/Sdk/ndk-bundle/build//../sysroot/usr/include/arm-linux-androideabi"
+        }
+      ],
+      "output": "E:\\Android\\BodyFitOriginal\\app\\build\\intermediates\\ndkBuild\\repositories\\obj\\local\\armeabi-v7a\\libjni-dtw.so"
+    }
+  },
+  "toolchains": {
+    "toolchain-armeabi-v7a": {
+      "cppCompilerExecutable": "C:\\Users\\lkeye\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\build\\..\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang++.exe"
+    }
+  },
+  "cFileExtensions": [],
+  "cppFileExtensions": [
+    "cpp"
+  ]
+}

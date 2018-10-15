@@ -25,7 +25,7 @@ public class Conditions {
     public static final int MESSAGE_ERROR_JSON = 0x101;
     public static final int MESSAGE_EXERCISE_TYPE = 0x102;
     public static final int MESSAGE_EXERCESE_STATUS = 0x103;
-    public static final int MESSAGE_EXERCISE_TIME=0x104;
+    public static final int MESSAGE_EXERCISE_TIME = 0x104;
 
     //Bundle keys
     public static final String JSON_KEY_ITEMS_PRE_SECOND = "items_pre_second";
@@ -38,6 +38,7 @@ public class Conditions {
     public static final String GROUP_EXERCISE_ASSESS = "group_exercise_assess";
     public static final String SET_SCORE = "set_score";
     public static final String ACTION_NUM = "action_num"; //动作次数
+    public static final String NUM_OF_ACTION_ARRAY = "num_of_action_array";//十五个动作各自的次数
     public static final String DTW_SCORE = "dtw_score";
     public static final String DTW = "dtw";
     public static final String TIME_TEST = "time_test";
@@ -48,37 +49,36 @@ public class Conditions {
     public static final String GY_TEST = "gy_test";
     public static final String GZ_TEST = "gz_test";
 
-    public static final String DURATION="duration"; //持续时间
-    public static final String GROUP_MAX_TIME="group_max_time";
-    public static final String GROUP_MIN_TIME="group_min_time";
-    public static final String GROUP_AVE_TIME="group_ave_time";
-    public static final String GROUP_MAX_DTW="group_max_dtw";
-    public static final String GROUP_MIN_DTW="group_min_dtw";
-    public static final String GROUP_AVE_DTW="group_ave_dtw";
+    public static final String DURATION = "duration"; //持续时间
+    public static final String GROUP_MAX_TIME = "group_max_time";
+    public static final String GROUP_MIN_TIME = "group_min_time";
+    public static final String GROUP_AVE_TIME = "group_ave_time";
+    public static final String GROUP_MAX_DTW = "group_max_dtw";
+    public static final String GROUP_MIN_DTW = "group_min_dtw";
+    public static final String GROUP_AVE_DTW = "group_ave_dtw";
 
-    public static final String GROUP_MAX_TIME1="group_max_time1";
-    public static final String GROUP_MIN_TIME1="group_min_time1";
-    public static final String GROUP_AVE_TIME1="group_ave_time1";
-    public static final String GROUP_MAX_DTW1="group_max_dtw1";
-    public static final String GROUP_MIN_DTW1="group_min_dtw1";
-    public static final String GROUP_AVE_DTW1="group_ave_dtw1";
+    public static final String GROUP_MAX_TIME1 = "group_max_time1";
+    public static final String GROUP_MIN_TIME1 = "group_min_time1";
+    public static final String GROUP_AVE_TIME1 = "group_ave_time1";
+    public static final String GROUP_MAX_DTW1 = "group_max_dtw1";
+    public static final String GROUP_MIN_DTW1 = "group_min_dtw1";
+    public static final String GROUP_AVE_DTW1 = "group_ave_dtw1";
 
-    public static final String GROUP_MAX_TIME2="group_max_time2";
-    public static final String GROUP_MIN_TIME2="group_min_time2";
-    public static final String GROUP_AVE_TIME2="group_ave_time2";
-    public static final String GROUP_MAX_DTW2="group_max_dtw2";
-    public static final String GROUP_MIN_DTW2="group_min_dtw2";
-    public static final String GROUP_AVE_DTW2="group_ave_dtw2";
+    public static final String GROUP_MAX_TIME2 = "group_max_time2";
+    public static final String GROUP_MIN_TIME2 = "group_min_time2";
+    public static final String GROUP_AVE_TIME2 = "group_ave_time2";
+    public static final String GROUP_MAX_DTW2 = "group_max_dtw2";
+    public static final String GROUP_MIN_DTW2 = "group_min_dtw2";
+    public static final String GROUP_AVE_DTW2 = "group_ave_dtw2";
 
-    public static final String GROUP_MAX_TIME3="group_max_time3";
-    public static final String GROUP_MIN_TIME3="group_min_time3";
-    public static final String GROUP_AVE_TIME3="group_ave_time3";
-    public static final String GROUP_MAX_DTW3="group_max_dtw3";
-    public static final String GROUP_MIN_DTW3="group_min_dtw3";
-    public static final String GROUP_AVE_DTW3="group_ave_dtw3";
+    public static final String GROUP_MAX_TIME3 = "group_max_time3";
+    public static final String GROUP_MIN_TIME3 = "group_min_time3";
+    public static final String GROUP_AVE_TIME3 = "group_ave_time3";
+    public static final String GROUP_MAX_DTW3 = "group_max_dtw3";
+    public static final String GROUP_MIN_DTW3 = "group_min_dtw3";
+    public static final String GROUP_AVE_DTW3 = "group_ave_dtw3";
 
-    public static final String TOTAL_TIME="total_time";
-
+    public static final String TOTAL_TIME = "total_time";
 
 
     //json keys
@@ -140,9 +140,9 @@ public class Conditions {
     public final static String exercise_14 = "14-上斜哑铃飞鸟";
     public final static String exercise_15 = "15-背后拉力器弯举";
 
-    public final static String[] exerciseName={"坐姿哑铃弯举","锤式弯举","哑铃侧卧外旋","坐姿器械推胸",
-    "正握下拉","弹力绳高位面拉","站姿飞鸟","坐姿推肩","阿诺德推举","单臂哑铃侧曲","杠铃划船","杠铃卧推",
-        "蝴蝶机夹胸","上斜哑铃飞鸟","背后拉力器弯举"};
+    public final static String[] exerciseName = {"坐姿哑铃弯举", "锤式弯举", "哑铃侧卧外旋", "坐姿器械推胸",
+            "正握下拉", "弹力绳高位面拉", "站姿飞鸟", "坐姿推肩", "阿诺德推举", "单臂哑铃侧曲", "杠铃划船", "杠铃卧推",
+            "蝴蝶机夹胸", "上斜哑铃飞鸟", "背后拉力器弯举"};
 //    public final static String exercise_16 = "16-双手拉绳";
 //    public final static String exercise_17 = "17-拉力器夹胸";
 //    public final static String exercise_18= "18-拉力器双臂上拉";
@@ -153,19 +153,24 @@ public class Conditions {
     //  public final static String exercise_17 = "17-坐姿推肩";
     public final static String too_slow = "太慢";
     public final static String too_fast = "太快";
-    public final static String User_grade="User_grade";
+    public final static String User_grade = "User_grade";
     //requestCode
     public final static int SOCIETY_R_CODE = 1;  //运动圈请求码
     public final static int EXERCISE_R_CODE = 2; //运动界面请求码
     public final static int PERSON_R_CODE = 3;   //个人信息界面请求码
 
-    public final static String EXERCISE_SOCIETY_CONTENT="exercise_society_content";
-    public final static String EXERCISE_SOCIETY_IMAGE="exercise_society_image";
+    public final static String EXERCISE_SOCIETY_CONTENT = "exercise_society_content";
+    public final static String EXERCISE_SOCIETY_IMAGE = "exercise_society_image";
 
+    public final static String CURRENT_SCORES="current_scores";
+    public final static String CURRENT_HEATIN="current_heat_in";
+    public final static String RECOMMENDED_FOOD="recommended_food";
 
+    public final static String USER_NAME="user_name";
+
+    public final static int recommendVegetableCount=17;
     //模板数（动作数）
     public final static int EXERCISE_NUM = 15;
-
 
 
     private Conditions() {

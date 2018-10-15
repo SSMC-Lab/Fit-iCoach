@@ -40,12 +40,12 @@ public class ToolUtil {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB) {
             android.text.ClipboardManager clipboard = (android.text.ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
             clipboard.setText(sourceText);
-            Toast.makeText(context,"copy success",Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "copy success", Toast.LENGTH_SHORT).show();
         } else {
             ClipboardManager clipboard = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
             ClipData clip = ClipData.newPlainText("Copied Text", sourceText);
             clipboard.setPrimaryClip(clip);
-            Toast.makeText(context,"copy success",Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "copy success", Toast.LENGTH_SHORT).show();
         }
     }
 }

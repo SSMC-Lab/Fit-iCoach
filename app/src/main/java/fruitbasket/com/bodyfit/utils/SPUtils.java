@@ -23,10 +23,11 @@ public class SPUtils {
 
     /**
      * 依据obj的类型填装
+     *
      * @param key
      * @param obj
      */
-    public static void put(String key, Object obj){
+    public static void put(String key, Object obj) {
         SharedPreferences.Editor editor = sp.edit();
         if (obj instanceof String) {
             editor.putString(key, (String) obj);
@@ -46,11 +47,12 @@ public class SPUtils {
 
     /**
      * 依据defaultObject的类型取出
+     *
      * @param key
      * @param defaultObject
      * @return
      */
-    public static Object get(String key, Object defaultObject){
+    public static Object get(String key, Object defaultObject) {
         if (defaultObject instanceof String) {
             return sp.getString(key, (String) defaultObject);
         } else if (defaultObject instanceof Integer) {
@@ -67,16 +69,18 @@ public class SPUtils {
 
     /**
      * 查询key是否已经存在
+     *
      * @param key
      * @return
      */
-    public static boolean contains( String key) {
+    public static boolean contains(String key) {
         return sp.contains(key);
     }
 
 
     /**
      * 移除key对应的值
+     *
      * @param key
      */
     public static void remove(String key) {

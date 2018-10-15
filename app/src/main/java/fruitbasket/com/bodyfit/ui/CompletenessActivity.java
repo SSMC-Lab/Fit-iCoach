@@ -9,34 +9,62 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
+import fruitbasket.com.bodyfit.Conditions;
 import fruitbasket.com.bodyfit.R;
+import fruitbasket.com.bodyfit.utils.SPUtils;
 
 public class CompletenessActivity extends AppCompatActivity {
-    private CircleProgressView aCircleBar;
-    private CircleProgressView bCircleBar;
-    private CircleProgressView cCircleBar;
+    private CircleProgressView[] circleBar = new CircleProgressView[15];
+    private int id[] = new int[]{
+            R.id.circle_1, R.id.circle_2, R.id.circle_3, R.id.circle_4,
+            R.id.circle_5, R.id.circle_6, R.id.circle_7, R.id.circle_8, R.id.circle_9,
+            R.id.circle_10, R.id.circle_11, R.id.circle_12, R.id.circle_13,
+            R.id.circle_14, R.id.circle_15};
+    private int[] num_of_action = new int[15];
+    public static final String TAG = "CompletenessActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layoyt_completeness);
+        getArray();
         initViews();
     }
+
+    private void getArray() {
+        num_of_action[0] = (int) SPUtils.get(Conditions.exercise_1, 0);
+        num_of_action[1] = (int) SPUtils.get(Conditions.exercise_2, 0);
+        num_of_action[2] = (int) SPUtils.get(Conditions.exercise_3, 0);
+        num_of_action[3] = (int) SPUtils.get(Conditions.exercise_4, 0);
+        num_of_action[4] = (int) SPUtils.get(Conditions.exercise_5, 0);
+        num_of_action[5] = (int) SPUtils.get(Conditions.exercise_6, 0);
+        num_of_action[6] = (int) SPUtils.get(Conditions.exercise_7, 0);
+        num_of_action[7] = (int) SPUtils.get(Conditions.exercise_8, 0);
+        num_of_action[8] = (int) SPUtils.get(Conditions.exercise_9, 0);
+        num_of_action[9] = (int) SPUtils.get(Conditions.exercise_10, 0);
+        num_of_action[10] = (int) SPUtils.get(Conditions.exercise_11, 0);
+        num_of_action[11] = (int) SPUtils.get(Conditions.exercise_12, 0);
+        num_of_action[12] = (int) SPUtils.get(Conditions.exercise_13, 0);
+        num_of_action[13] = (int) SPUtils.get(Conditions.exercise_14, 0);
+        num_of_action[14] = (int) SPUtils.get(Conditions.exercise_15, 0);
+
+    }
+
     private void initViews() {
-
-        aCircleBar = (CircleProgressView) findViewById(R.id.circle_a);
-        aCircleBar.setTitle("A");
-        aCircleBar.setProgress(89);
-
-        bCircleBar = (CircleProgressView) findViewById(R.id.circle_b);
-        bCircleBar.setTitle("B");
-        bCircleBar.setProgress(46);
-
-        cCircleBar = (CircleProgressView) findViewById(R.id.circle_c);
-        cCircleBar.setTitle("C");
-        cCircleBar.setProgress(22);
+        int progress = 0;
+        for (int i = 0; i < 15; i++) {
+            Log.i(TAG, "initViews: " + (num_of_action[i] * 1.0) / 30);
+            circleBar[i] = (CircleProgressView) findViewById(id[i]);
+            circleBar[i].setTitle("A" + (i + 1));
+            if (num_of_action[i] >= 30)
+                progress = 100;
+            else
+                progress = (int) ((num_of_action[i] * 1.0 / 30) * 100);
+            circleBar[i].setProgress(progress);
+        }
     }
 }
 
@@ -50,7 +78,7 @@ class CircleProgressView extends View {
 
     private int mProgress = 30;
 
-    private final int mCircleLineStrokeWidth = 8;
+    private final int mCircleLineStrokeWidth = 13;
 
     private final int mTxtStrokeWidth = 2;
 
@@ -115,7 +143,7 @@ class CircleProgressView extends View {
         //绘制文本
         textHeight /= 2;
         textWidth /= 2;
-        canvas.drawText(title, width/2 - textHeight/2 , height/4 + textHeight/2 ,mPaint);
+        canvas.drawText(title, width / 3 - textHeight / 6, height / 4 + textHeight / 2, mPaint);
 
         if (!TextUtils.isEmpty(mTxtHint1)) {
             mPaint.setStrokeWidth(mTxtStrokeWidth);
@@ -173,7 +201,7 @@ class CircleProgressView extends View {
         this.mTxtHint2 = mTxtHint2;
     }
 
-    public void setTitle(String title){
+    public void setTitle(String title) {
         this.title = title;
     }
 }

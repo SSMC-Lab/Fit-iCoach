@@ -47,7 +47,7 @@ public class BluetoothService extends Service {
     byte[] dataBuf = new byte[32];
     volatile int lastId = 0;
 
-    private double start,end;
+    private double start, end;
     private boolean isBegin = false;
 
     private long itemsNumber = 0;//记录从蓝牙设备中已经读取的数据条目数量
@@ -241,7 +241,7 @@ public class BluetoothService extends Service {
 
         @Override
         public void onCharacteristicChanged(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic) {
-            if (!isBegin){
+            if (!isBegin) {
                 start = System.currentTimeMillis();
                 isBegin = true;
             }
@@ -267,9 +267,9 @@ public class BluetoothService extends Service {
                 if (loadSize < dataUnits.length - 1) {
                     dataUnits[loadSize] = dataUnit;
 
-                    DataUnitForSQL dataUnitForSQL=new DataUnitForSQL(dataUnit.getTime(),dataUnit.getAx(),dataUnit.getAy(),
-                            dataUnit.getAz(),dataUnit.getGx(),dataUnit.getGy(),dataUnit.getGz(),dataUnit.getMx(),
-                            dataUnit.getMy(),dataUnit.getMz(),dataUnit.getP1(),dataUnit.getP2(),dataUnit.getP3());
+                    DataUnitForSQL dataUnitForSQL = new DataUnitForSQL(dataUnit.getTime(), dataUnit.getAx(), dataUnit.getAy(),
+                            dataUnit.getAz(), dataUnit.getGx(), dataUnit.getGy(), dataUnit.getGz(), dataUnit.getMx(),
+                            dataUnit.getMy(), dataUnit.getMz(), dataUnit.getP1(), dataUnit.getP2(), dataUnit.getP3());
                     dataUnitForSQL.save();
 
                     ++loadSize;
@@ -285,7 +285,7 @@ public class BluetoothService extends Service {
                     loadSize = 0;
                     DataSet dataSet = new DataSet(dataUnits);
                     end = System.currentTimeMillis();
-                    Log.i(TAG,"BlueTeeth"+ (end - start) + "");
+                    Log.i(TAG, "BlueTeeth" + (end - start) + "");
                     isBegin = false;
                     //这里analysis可能会产生一个处理延迟或处理缺失的问题
                     if (analysis.addToSet(dataSet) == false) {

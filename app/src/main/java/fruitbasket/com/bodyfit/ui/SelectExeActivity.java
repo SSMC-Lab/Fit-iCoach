@@ -17,26 +17,24 @@ import android.widget.ListView;
 import android.widget.NumberPicker;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-
 import fruitbasket.com.bodyfit.R;
 
-public class         SelectExeActivity extends Activity {
-    public static final String TAG="SelectExeActivity";
+public class SelectExeActivity extends Activity {
+    public static final String TAG = "SelectExeActivity";
     public static final int maxClickTimes = 2;
 
-    private SharedPreferences preferences ;
-    private SharedPreferences.Editor editor ;
-    private String []target_array;
-    private String []target_array_default;
+    private SharedPreferences preferences;
+    private SharedPreferences.Editor editor;
+    private String[] target_array;
+    private String[] target_array_default;
     private int clickTimes;
     private ListView list1;
     private ListView list2;
     private ListView list3;
-    private Context context=this;
+    private Context context = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,23 +43,22 @@ public class         SelectExeActivity extends Activity {
 
         preferences = context.getSharedPreferences("user_target", Context.MODE_PRIVATE);
         editor = preferences.edit();
-        target_array =  getResources().getStringArray(R.array.target_array);
-        target_array_default =  getResources().getStringArray(R.array.target_array_default);
-        clickTimes = preferences.getInt("count",Integer.parseInt(getResources().getString(R.string.default_target_clicktimes)));  //初始化点击增加/删除 标志的次数
+        target_array = getResources().getStringArray(R.array.target_array);
+        target_array_default = getResources().getStringArray(R.array.target_array_default);
+        clickTimes = preferences.getInt("count", Integer.parseInt(getResources().getString(R.string.default_target_clicktimes)));  //初始化点击增加/删除 标志的次数
 
         CreateTargetItem();
 
         //-------增删信息-----
-        final ImageButton addButton = (ImageButton)findViewById(R.id.target_add);
-        final ImageButton delButton = (ImageButton)findViewById(R.id.target_del);
+        final ImageButton addButton = (ImageButton) findViewById(R.id.target_add);
+        final ImageButton delButton = (ImageButton) findViewById(R.id.target_del);
 
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(clickTimes == maxClickTimes){
-                    Toast.makeText(context,"最多添加"+(maxClickTimes+1)+"项哦~",Toast.LENGTH_SHORT).show();
-                }
-                else {
+                if (clickTimes == maxClickTimes) {
+                    Toast.makeText(context, "最多添加" + (maxClickTimes + 1) + "项哦~", Toast.LENGTH_SHORT).show();
+                } else {
                     //show animation
                     RotateAnimation ra = new RotateAnimation(0, 180, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
                     ra.setFillAfter(true);
@@ -69,9 +66,9 @@ public class         SelectExeActivity extends Activity {
                     addButton.startAnimation(ra);
 
                     //set visibility
-                    if(clickTimes == 0)
+                    if (clickTimes == 0)
                         list2.setVisibility(View.VISIBLE);
-                    else if(clickTimes == 1 )
+                    else if (clickTimes == 1)
                         list3.setVisibility(View.VISIBLE);
 
                     // deal with logic code
@@ -87,29 +84,28 @@ public class         SelectExeActivity extends Activity {
         delButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(clickTimes == 0){
-                    Toast.makeText(context,"最少要有一项哦~",Toast.LENGTH_SHORT).show();
-                }
-                else{
+                if (clickTimes == 0) {
+                    Toast.makeText(context, "最少要有一项哦~", Toast.LENGTH_SHORT).show();
+                } else {
                     //show animation
-                    RotateAnimation ra =new RotateAnimation(0, 180, Animation.RELATIVE_TO_SELF, 0.5f,Animation.RELATIVE_TO_SELF,0.5f);
+                    RotateAnimation ra = new RotateAnimation(0, 180, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
                     ra.setFillAfter(true);
                     ra.setDuration(500);
                     delButton.startAnimation(ra);
 
                     // deal with logic code
 
-                    int tmpInt = clickTimes+1;
+                    int tmpInt = clickTimes + 1;
                     String tmpStr = String.valueOf(tmpInt);
                     editor.putInt("count", clickTimes);
-                    editor.putInt("action"+tmpStr,0);
-                    editor.putInt("target_sets"+tmpStr, Integer.parseInt(target_array_default[1]));
+                    editor.putInt("action" + tmpStr, 0);
+                    editor.putInt("target_sets" + tmpStr, Integer.parseInt(target_array_default[1]));
                     editor.putInt("target_times" + tmpStr, Integer.parseInt(target_array_default[2]));
                     editor.apply();
                     //set visibility
-                    if(clickTimes == 1)
+                    if (clickTimes == 1)
                         list2.setVisibility(View.INVISIBLE);
-                    else if(clickTimes == 2 )
+                    else if (clickTimes == 2)
                         list3.setVisibility(View.INVISIBLE);
 
                     clickTimes--;
@@ -120,46 +116,45 @@ public class         SelectExeActivity extends Activity {
     }
 
     //初始化和点击选项会调用该函数,自动根据count来调整
-    private ArrayList<Map<String,String>> refresh(int ii){
+    private ArrayList<Map<String, String>> refresh(int ii) {
         final String preferences_action = "action" + ii;
         final String preferences_target_sets = "target_sets" + ii;
         final String preferences_target_times = "target_times" + ii;
 
-        ArrayList<Map<String,String>> listItems = new ArrayList<>();
+        ArrayList<Map<String, String>> listItems = new ArrayList<>();
 
         int getTargetType = preferences.getInt(preferences_action, 0);
         String getTargetSets;
         String getTargetTimes;
-        if(getTargetType==0){
+        if (getTargetType == 0) {
             editor.putInt(preferences_target_sets, 0);
             editor.putInt(preferences_target_times, 0);
             editor.apply();
 
-            getTargetSets="0";
-            getTargetTimes="0";
-        }
-        else {
+            getTargetSets = "0";
+            getTargetTimes = "0";
+        } else {
             getTargetSets = String.valueOf(preferences.getInt(preferences_target_sets, 0));
             getTargetTimes = String.valueOf(preferences.getInt(preferences_target_times, 0));
         }
-        String[] data = new String[]{getResources().getStringArray(R.array.action_type)[getTargetType],getTargetSets,getTargetTimes};
+        String[] data = new String[]{getResources().getStringArray(R.array.action_type)[getTargetType], getTargetSets, getTargetTimes};
 
         //写入listItems
-        for(int i=0; i<target_array.length; i++){
-            Map<String,String> mapItems = new HashMap<>();
-            mapItems.put("target",target_array[i]);
-            if(getTargetType!=0)
-                mapItems.put("data",data[i]);
+        for (int i = 0; i < target_array.length; i++) {
+            Map<String, String> mapItems = new HashMap<>();
+            mapItems.put("target", target_array[i]);
+            if (getTargetType != 0)
+                mapItems.put("data", data[i]);
             else
-                mapItems.put("data",target_array_default[i]);
+                mapItems.put("data", target_array_default[i]);
 
             listItems.add(mapItems);
         }
         return listItems;
     }
 
-    private void CreateTargetItem(){
-        for(int ii = 1 ;ii <= maxClickTimes+1 ; ++ii) {
+    private void CreateTargetItem() {
+        for (int ii = 1; ii <= maxClickTimes + 1; ++ii) {
             final ArrayList<Map<String, String>> al = refresh(ii);
             final SimpleAdapter adapter = new SimpleAdapter(context, al,
                     R.layout.layout_profileandtarget_listext,
@@ -167,20 +162,18 @@ public class         SelectExeActivity extends Activity {
                     new int[]{R.id.profile_items, R.id.profile_info});
 
             ListView list; //为了下面代码都是用list，不用来个if else判断是list1还是list2等等
-            if(ii == 1 ) {
-                list1 = (ListView)findViewById(R.id.target_list1);
+            if (ii == 1) {
+                list1 = (ListView) findViewById(R.id.target_list1);
                 list = list1;
-            }
-            else if(ii == 2) {
-                list2 = (ListView)findViewById(R.id.target_list2);
+            } else if (ii == 2) {
+                list2 = (ListView) findViewById(R.id.target_list2);
                 list = list2;
-                if(clickTimes == 0)
+                if (clickTimes == 0)
                     list2.setVisibility(View.INVISIBLE);
-            }
-            else {
-                list3 = (ListView)findViewById(R.id.target_list3);
+            } else {
+                list3 = (ListView) findViewById(R.id.target_list3);
                 list = list3;
-                if(clickTimes == 1 || clickTimes == 0)
+                if (clickTimes == 1 || clickTimes == 0)
                     list3.setVisibility(View.INVISIBLE);
             }
 
@@ -215,7 +208,7 @@ public class         SelectExeActivity extends Activity {
                                             al.clear();
                                             al.addAll(refresh(finalIi));
                                             adapter.notifyDataSetChanged();
-                                            Toast.makeText(SelectExeActivity.this, "type="+actionPicker.getValue(), Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(SelectExeActivity.this, "type=" + actionPicker.getValue(), Toast.LENGTH_SHORT).show();
                                         }
                                     }).
                                     setNegativeButton("取消", null).
@@ -242,7 +235,7 @@ public class         SelectExeActivity extends Activity {
                                             al.clear();
                                             al.addAll(refresh(finalIi));
                                             adapter.notifyDataSetChanged();
-                                            Toast.makeText(SelectExeActivity.this, "group="+mSetPicker.getValue(), Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(SelectExeActivity.this, "group=" + mSetPicker.getValue(), Toast.LENGTH_SHORT).show();
                                         }
                                     }).
                                     setNegativeButton("取消", null).
@@ -268,7 +261,7 @@ public class         SelectExeActivity extends Activity {
                                             al.clear();
                                             al.addAll(refresh(finalIi));
                                             adapter.notifyDataSetChanged();
-                                            Toast.makeText(SelectExeActivity.this, "number="+mTimePicker.getValue(), Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(SelectExeActivity.this, "number=" + mTimePicker.getValue(), Toast.LENGTH_SHORT).show();
                                         }
                                     }).
                                     setNegativeButton("取消", null).
@@ -285,8 +278,8 @@ public class         SelectExeActivity extends Activity {
     public boolean onKeyDown(int keyCode, KeyEvent event) {
 
         if (keyCode == KeyEvent.KEYCODE_BACK) {
-            Intent intent=getIntent();
-            this.setResult(0,intent);
+            Intent intent = getIntent();
+            this.setResult(0, intent);
             this.finish();
             return true;
         }

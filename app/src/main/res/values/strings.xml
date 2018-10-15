@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">BodyFit</string>
+    <string name="app_name">Fit-iCoach</string>
 
     <string name="tab_target">目标</string>
     <string name="tab_exercise">训练</string>
@@ -45,4 +45,14 @@
     <string name="T8">器械夹胸</string>
     <string name="T9">上斜板哑铃卧推</string>
     <string name="T10">十字夹胸</string>
+
+    <string name="login_success">登录成功</string>
+    <string name="login">登录</string>
+    <string name="Username">请输入您的用户名</string>
+    <string name="Password">请输入您的密码</string>
+    <string name="forgot_your_password">忘记密码 ?</string>
+    <string name="go">登录</string>
+    <string name="repeat_password">请重复输入您的密码</string>
+    <string name="next">完成注册</string>
+    <string name="register">注册</string>
 </resources>

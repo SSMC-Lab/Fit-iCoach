@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import fruitbasket.com.bodyfit.R;
 
-public class TitleBar extends LinearLayout{
+public class TitleBar extends LinearLayout {
     private LinearLayout ll_left;
     private ImageView iv_left;
     private TextView tx_left;
@@ -22,24 +22,26 @@ public class TitleBar extends LinearLayout{
     private TextView tx_right;
     private TextView title;
 
-    private String TAG="TitleBar";
+    private String TAG = "TitleBar";
+
     /**
      * 构造方法：用于获取对象
      */
     public TitleBar(Context context) {
-        this(context,null);
+        this(context, null);
     }
+
     public TitleBar(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
     public TitleBar(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        initView(context,attrs);
+        initView(context, attrs);
     }
 
-    public void initView( Context context,AttributeSet attrs) {
-        LayoutInflater.from(context).inflate(R.layout.widget_title_bar,this);
+    public void initView(Context context, AttributeSet attrs) {
+        LayoutInflater.from(context).inflate(R.layout.widget_title_bar, this);
         ll_left = (LinearLayout) findViewById(R.id.ll_title_bar_left);
         iv_left = (ImageView) findViewById(R.id.ic_title_bar_left);
         tx_left = (TextView) findViewById(R.id.tx_title_bar_left);
@@ -48,7 +50,7 @@ public class TitleBar extends LinearLayout{
         iv_right = (ImageView) findViewById(R.id.ic_title_bar_right);
         tx_right = (TextView) findViewById(R.id.tx_title_bar_right);
         title = (TextView) findViewById(R.id.tx_title);
-        Log.i(TAG,"title="+title);
+        Log.i(TAG, "title=" + title);
     }
 
     /**
@@ -78,7 +80,7 @@ public class TitleBar extends LinearLayout{
      * @return
      */
     public TitleBar setTitleRight(String rightTitle) {
-        if (rightTitle!=null) {
+        if (rightTitle != null) {
             tx_right.setVisibility(View.VISIBLE);
             iv_right.setVisibility(View.GONE);
             tx_right.setTextColor(Color.BLACK);
@@ -86,6 +88,7 @@ public class TitleBar extends LinearLayout{
         }
         return this;
     }
+
     /**
      * 用于设置标题栏左边要显示的图片
      *
@@ -97,6 +100,7 @@ public class TitleBar extends LinearLayout{
         iv_left.setImageResource(R.drawable.back_left);
         return this;
     }
+
     /**
      * 用于设置标题栏右边要显示的图片
      *
@@ -106,7 +110,7 @@ public class TitleBar extends LinearLayout{
     public TitleBar setRightIco(int resId) {
 
         iv_right.setVisibility(resId > 0 ? View.VISIBLE : View.GONE);
-        if(resId>0)
+        if (resId > 0)
             iv_right.setImageResource(resId);
         return this;
     }
@@ -122,6 +126,7 @@ public class TitleBar extends LinearLayout{
         iv_right.setImageResource(R.drawable.ic_camera);
         return this;
     }
+
     /**
      * 用于设置标题栏左边图片的单击事件
      *
@@ -134,6 +139,7 @@ public class TitleBar extends LinearLayout{
         }
         return this;
     }
+
     /**
      * 用于设置标题栏右边图片的单击事件
      *

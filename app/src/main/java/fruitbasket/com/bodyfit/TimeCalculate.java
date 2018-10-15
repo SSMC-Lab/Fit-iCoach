@@ -5,6 +5,7 @@ package fruitbasket.com.bodyfit;
  */
 
 public class TimeCalculate {
+
     private static long start;
     private static long end;
     private static boolean isBegin = false;

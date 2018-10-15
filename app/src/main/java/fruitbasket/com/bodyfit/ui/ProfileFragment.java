@@ -19,31 +19,29 @@ import android.widget.NumberPicker;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.SimpleAdapter;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-
 import fruitbasket.com.bodyfit.R;
 
 public class ProfileFragment extends Fragment {
-    public static final String TAG="ProfileFragment";
 
+    public static final String TAG = "ProfileFragment";
 
     @Override
-    public View onCreateView(final LayoutInflater inflater, final ViewGroup container, final Bundle savedInstanceState){
+    public View onCreateView(final LayoutInflater inflater, final ViewGroup container, final Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.layout_profile, container, false);
 
         final SharedPreferences preferences = getActivity().getSharedPreferences("user_info", Context.MODE_PRIVATE);
         final SharedPreferences.Editor editor = preferences.edit();
 
-        ListView list = (ListView)view.findViewById(R.id.profile_list);
+        ListView list = (ListView) view.findViewById(R.id.profile_list);
 
-        final ArrayList<Map<String,String>> al = refresh();
-        final SimpleAdapter adapter = new SimpleAdapter(this.getActivity(),al,
+        final ArrayList<Map<String, String>> al = refresh();
+        final SimpleAdapter adapter = new SimpleAdapter(this.getActivity(), al,
                 R.layout.layout_profileandtarget_listext,
-                new String[]{"info","data"},
-                new int[]{R.id.profile_items,R.id.profile_info});
+                new String[]{"info", "data"},
+                new int[]{R.id.profile_items, R.id.profile_info});
 
         list.setAdapter(adapter);
 
@@ -79,7 +77,7 @@ public class ProfileFragment extends Fragment {
                         LinearLayout ll = new LinearLayout(getContext());
                         RadioGroup mRadioGroup = new RadioGroup(getContext());
 
-                       final RadioButton RB1 = new RadioButton(getContext());
+                        final RadioButton RB1 = new RadioButton(getContext());
                         RB1.setText("男");
                         RB1.setTextColor(Color.rgb(153, 153, 255));
                         RB1.setTextSize(40);
@@ -97,7 +95,7 @@ public class ProfileFragment extends Fragment {
                         mRadioGroup.setPadding(50, 50, 50, 50);
                         mRadioGroup.setOrientation(LinearLayout.HORIZONTAL);
 
-                        if(sex.equals("男"))
+                        if (sex.equals("男"))
                             mRadioGroup.check(RB1.getId());
                         else
                             mRadioGroup.check(RB2.getId());
@@ -182,35 +180,35 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-        return  view;
+        return view;
     }
 
-    private ArrayList<Map<String,String>> refresh(){
+    private ArrayList<Map<String, String>> refresh() {
 
         SharedPreferences preferences = getActivity().getSharedPreferences("user_info", Context.MODE_PRIVATE);
 
-        ArrayList<Map<String,String>> listItems = new ArrayList<>();
+        ArrayList<Map<String, String>> listItems = new ArrayList<>();
 
-        String []profile_array =  getResources().getStringArray(R.array.profile_array);
-        String []profile_array_default =  getResources().getStringArray(R.array.profile_array_default);
+        String[] profile_array = getResources().getStringArray(R.array.profile_array);
+        String[] profile_array_default = getResources().getStringArray(R.array.profile_array_default);
 
 
         String getNickname = preferences.getString("nickname", getContext().getResources().getString(R.string.default_nickname));
         String getSex = preferences.getString("sex", "男");
         String getHeight = String.valueOf(preferences.getInt("height", 0));
         String getWeight = String.valueOf(preferences.getInt("weight", 0));
-        String[] data = new String[]{getNickname,getSex,getHeight,getWeight};
+        String[] data = new String[]{getNickname, getSex, getHeight, getWeight};
 
-        for(int i=0; i<profile_array.length; i++){
-            Map<String,String> mapItems = new HashMap<>();
-            mapItems.put("info",profile_array[i]);
-            if(data[i].length()>0)
-                mapItems.put("data",data[i]);
+        for (int i = 0; i < profile_array.length; i++) {
+            Map<String, String> mapItems = new HashMap<>();
+            mapItems.put("info", profile_array[i]);
+            if (data[i].length() > 0)
+                mapItems.put("data", data[i]);
             else
-                mapItems.put("data",profile_array_default[i]);
+                mapItems.put("data", profile_array_default[i]);
 
             listItems.add(mapItems);
         }
         return listItems;
     }
- }
+}

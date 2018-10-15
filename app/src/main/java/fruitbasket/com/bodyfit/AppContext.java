@@ -10,7 +10,6 @@ import android.util.Log;
 
 
 /**
- *
  * <p>
  * baselib appcontext类
  * <p>
@@ -73,7 +72,6 @@ public class AppContext {
         checkAppContext();
         return sApplication.getResources();
     }
-
 
 
     public static boolean isMainThread() {

@@ -1,122 +1,149 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    android:id="@+id/screen"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/behind_background"
-    android:scrollbars="none">
-    <RelativeLayout
-        android:isScrollContainer="true"
-        android:background="@drawable/behind_background"
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    android:background="@drawable/bg2">
 
+    <android.support.v7.widget.CardView
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        app:cardCornerRadius="6dp"
+        app:cardElevation="3dp"
+        app:cardUseCompatPadding="true"
+        android:layout_centerInParent="true"
+        android:id="@+id/cv">
         <LinearLayout
-            android:id="@+id/welcome_layout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="50dp">
-
-            <TextView
-                android:id="@+id/welcome1_textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="15dp"
-                android:text="Welcome To BodyFit"
-                android:textSize="25dp"
-                />
-
-            <TextView
-                android:id="@+id/welcome2_textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
-                android:text="Please login first"
-                />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/input_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="170dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:showDividers="beginning"
-            >
-            <ImageView
-                android:layout_width="fill_parent"
-                android:layout_height="1dp"
-                android:background="#ffffff"
-                />
-            <EditText
-                android:id="@+id/editText_userName"
-                android:drawableLeft="@drawable/login_user"
-                android:drawablePadding="18dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:singleLine="true"
-                android:background="#F5F5F5"
-                android:hint="请输入您的用户名"
-                android:textSize="15dp"
-
-                />
-            <ImageView
-                android:layout_width="fill_parent"
-                android:layout_height="1dp"
-                android:background="#ffffff"
-                />
-            <EditText
-                android:id="@+id/edit_userPassword"
-                android:drawableLeft="@drawable/password"
-                android:drawablePadding="18dp"
+                android:layout_height="45dp">
+                <View
+                    android:layout_width="8dp"
+                    android:layout_height="match_parent"
+                    android:background="#5CACEE"
+                    android:layout_alignParentLeft="true" />
+                <TextView
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/login"
+                    android:textColor="#FFCC00"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="50dp" />
+            </RelativeLayout>
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:singleLine="true"
-                android:background="#F5F5F5"
-                android:hint="请输入您的密码"
-                android:textSize="15dp"
-                />
-            <ImageView
-                android:layout_width="fill_parent"
-                android:layout_height="1dp"
-                android:background="#ffffff"
-                />
+                android:layout_height="50dp"
+                android:paddingLeft="50dp"
+                android:paddingRight="30dp">
+                <android.support.design.widget.TextInputLayout
+                    android:textColorHint="#c5c5c5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:textSize="18sp"
+                        android:hint="@string/Username"
+                        android:textColor="#5CACEE"
+                        android:id="@+id/login_username"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPersonName"
+                        android:background="@drawable/selector_bg_edit"
+                        android:textCursorDrawable="@drawable/bg_input_cursor"
+                        android:paddingBottom="2dp"
+                        />
+                </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:paddingLeft="50dp"
+                android:paddingRight="30dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+                <android.support.design.widget.TextInputLayout
+                    android:textColorHint="#c5c5c5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:textSize="18sp"
+                        android:hint="@string/Password"
+                        android:textColor="#5CACEE"
+                        android:id="@+id/login_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPassword"
+                        android:background="@drawable/selector_bg_edit"
+                        android:textCursorDrawable="@drawable/bg_input_cursor"
+                        android:paddingBottom="2dp"
+                        />
+                </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginLeft="40dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/Button_login"
-                android:layout_marginTop="23dp"
+                <CheckBox
+                    android:id="@+id/login_remember_psw"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:shadowColor="@color/colorAccent"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13sp"
+                    android:text="记住密码"
+                    android:textColor="@color/colorAccent"/>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="60dp">
+                <Button
+                    android:id="@+id/login_bt_submit"
+                    android:background="@drawable/bt_shape"
+                    android:stateListAnimator="@drawable/state_list_animator_z"
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
+                    android:text="@string/go"
+                    android:textColor="#5CACEE">
+                </Button>
+            </RelativeLayout>
+            <!--<TextView
+                android:layout_marginTop="5dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_width="290dp"
-                android:layout_height="38dp"
-                android:text="登录"
-                android:textColor="#F5F5F5"
-                android:textSize="17dp"
-                android:background="#1E90FF"
-                />
-
-            <Button
-                android:id="@+id/Button_register"
+                android:textColor="#9a9a9a"
+                android:textSize="12sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="190dp"
-                android:text="注册账号"
-                android:textColor="#F4A460"
-                android:background="#00000000"
-                />
+                android:text="@string/forgot_your_password"
+                />-->
         </LinearLayout>
+    </android.support.v7.widget.CardView>
 
-    </RelativeLayout>
-</ScrollView>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:fabSize="normal"
+        android:src="@drawable/plus"
+        android:transitionName="loginFab"
+        android:layout_alignTop="@id/cv"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="-20dp"
+        android:layout_alignRight="@id/cv" />
+
+</RelativeLayout>

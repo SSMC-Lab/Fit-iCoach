@@ -5,10 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-
 import android.os.Bundle;
 import android.os.Handler;
-
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Log;
@@ -37,7 +35,6 @@ import java.lang.reflect.Field;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.locks.Condition;
 
 import fruitbasket.com.bodyfit.Conditions;
 import fruitbasket.com.bodyfit.R;
@@ -76,7 +73,7 @@ public class ExerciseFragment extends BluetoothFragment {
     private MaterialDialog.Builder mBuilder;
     private MaterialDialog mMaterialDialog;
 
-//    private LineChartManager lineChartManager1;
+    //    private LineChartManager lineChartManager1;
     private LineChartManager lineChartManager2;
 
 
@@ -89,7 +86,7 @@ public class ExerciseFragment extends BluetoothFragment {
     private Animator animator;
     private Button selectButton;
 
-//    private LineChart lineCharta;
+    //    private LineChart lineCharta;
     private LineChart lineChartg;
     private ToggleButton manualRecordButton; //手动记录按钮
 
@@ -99,30 +96,30 @@ public class ExerciseFragment extends BluetoothFragment {
     private boolean hasStorage = false;
     private int count;
 
-
     private String type;    //运动类型
     private String type_Manual; //个人模板运动类型
     private double dtw_time; //dtw时间
     private double dtw_time_Manual; //dtw个人模板时间
-    private double singleTime=0;
+    private double singleTime = 0;
     private int singleNum, oldNum = 0;    //运动次数
     private static int totalNum = 0;  //累计运动次数
-    private static double totalTime=0;
-    private int t1=1;
-    private int t2=1;
+    private static double totalTime = 0;
+    private int t1 = 1;
+    private int t2 = 1;
     private double assess;
     private int dtw_score;
     private int dtw;
-    private float groupMaxTime1,groupMinTime1,groupAveTime1;
-    private float groupMaxDtw1,groupMinDtw1,groupAveDtw1;
-    private float groupMaxTime2,groupMinTime2,groupAveTime2;
-    private float groupMaxDtw2,groupMinDtw2,groupAveDtw2;
-    private float groupMaxTime3,groupMinTime3,groupAveTime3;
-    private float groupMaxDtw3,groupMinDtw3,groupAveDtw3;
+    private float groupMaxTime1, groupMinTime1, groupAveTime1;
+    private float groupMaxDtw1, groupMinDtw1, groupAveDtw1;
+    private float groupMaxTime2, groupMinTime2, groupAveTime2;
+    private float groupMaxDtw2, groupMinDtw2, groupAveDtw2;
+    private float groupMaxTime3, groupMinTime3, groupAveTime3;
+    private float groupMaxDtw3, groupMinDtw3, groupAveDtw3;
+    private int[] num_of_action_array;
 
-    private long startTime,endTime;
+    private long startTime, endTime;
     private static List<DataTableActivity.Content> contentList;
-    private double[] ax,ay,az,gx,gy,gz;
+    private double[] ax, ay, az, gx, gy, gz;
     private Context context;
 
     @Override
@@ -139,11 +136,11 @@ public class ExerciseFragment extends BluetoothFragment {
         initView(view);
 
         //设置了两个图标的大小
-        Drawable drawable=getResources().getDrawable(R.drawable.muscle);
-        drawable.setBounds(0,0,50,50);
+        Drawable drawable = getResources().getDrawable(R.drawable.muscle);
+        drawable.setBounds(0, 0, 50, 50);
 //        actionList.setCompoundDrawables(drawable,null,null,null);
-        drawable=getResources().getDrawable(R.drawable.select);
-        drawable.setBounds(0,0,50,50);
+        drawable = getResources().getDrawable(R.drawable.select);
+        drawable.setBounds(0, 0, 50, 50);
 //        selectButton.setCompoundDrawables(drawable,null,null,null);
 
         toggleButton.setOnClickListener(new ToggleClickListener());
@@ -167,7 +164,7 @@ public class ExerciseFragment extends BluetoothFragment {
             }
         });
 */
-        View.OnClickListener listener=new myOnClickListener();
+        View.OnClickListener listener = new myOnClickListener();
 
 //        infoLayout.setOnClickListener(listener);
 //        selectExercise.setOnClickListener(listener);
@@ -176,12 +173,11 @@ public class ExerciseFragment extends BluetoothFragment {
 //        clear_b.setOnClickListener(listener);
 
 
-
         rlContent.getBackground().setAlpha(5);
-        handler=new Handler();
+        handler = new Handler();
         actionList.setOnClickListener(listener);
         selectGrade.setOnClickListener(listener);
-        SPUtils.put(Conditions.User_grade,"初级");
+        SPUtils.put(Conditions.User_grade, "初级");
         testButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -190,49 +186,49 @@ public class ExerciseFragment extends BluetoothFragment {
         });
 
 //        lineChartManager1=new LineChartManager(lineCharta);
-        lineChartManager2=new LineChartManager(lineChartg);
+        lineChartManager2 = new LineChartManager(lineChartg);
         initContent();
         firstRowAsTitle();
         initLineChartContent();
         return view;
     }
 
-    private void storage(int realLen,double[] axSet,double[] aySet,double[] azSet,double[] gxSet,double[] gySet,double[] gzSet,
-                         double[]mxSet, double[]mySet, double[]mzSet, double[]p1Set, double[]p2Set, double[]p3Set) {
+    private void storage(int realLen, double[] axSet, double[] aySet, double[] azSet, double[] gxSet, double[] gySet, double[] gzSet,
+                         double[] mxSet, double[] mySet, double[] mzSet, double[] p1Set, double[] p2Set, double[] p3Set) {
         StorageData sd = new StorageData(String.valueOf(textView_fileName.getText()));
         try {
-            Log.e(TAG,"realLen:"+realLen);
-            double []ax = new double[realLen*5];
-            double []ay = new double[realLen*5];
-            double []az = new double[realLen*5];
-            double []gx = new double[realLen*5];
-            double []gy = new double[realLen*5];
-            double []gz = new double[realLen*5];
-            double []mx = new double[realLen*5];
-            double []my = new double[realLen*5];
-            double []mz = new double[realLen*5];
-            double []p1 = new double[realLen*5];
-            double []p2 = new double[realLen*5];
-            double []p3 = new double[realLen*5];
-            System.arraycopy(axSet,0,ax,0,realLen*5);
-            System.arraycopy(aySet,0,ay,0,realLen*5);
-            System.arraycopy(azSet,0,az,0,realLen*5);
-            System.arraycopy(gxSet,0,gx,0,realLen*5);
-            System.arraycopy(gySet,0,gy,0,realLen*5);
-            System.arraycopy(gzSet,0,gz,0,realLen*5);
-            System.arraycopy(mxSet,0,mx,0,realLen*5);
-            System.arraycopy(mySet,0,my,0,realLen*5);
-            System.arraycopy(mzSet,0,mz,0,realLen*5);
-            System.arraycopy(p1Set,0,p1,0,realLen*5);
-            System.arraycopy(p2Set,0,p2,0,realLen*5);
-            System.arraycopy(p3Set,0,p3,0,realLen*5);
-            Log.e(TAG, "axSet: "+axSet.length);
-            Log.e(TAG, "mxSet: "+mxSet.length );
-            double[]time = new double[realLen*5];
+            Log.e(TAG, "realLen:" + realLen);
+            double[] ax = new double[realLen * 5];
+            double[] ay = new double[realLen * 5];
+            double[] az = new double[realLen * 5];
+            double[] gx = new double[realLen * 5];
+            double[] gy = new double[realLen * 5];
+            double[] gz = new double[realLen * 5];
+            double[] mx = new double[realLen * 5];
+            double[] my = new double[realLen * 5];
+            double[] mz = new double[realLen * 5];
+            double[] p1 = new double[realLen * 5];
+            double[] p2 = new double[realLen * 5];
+            double[] p3 = new double[realLen * 5];
+            System.arraycopy(axSet, 0, ax, 0, realLen * 5);
+            System.arraycopy(aySet, 0, ay, 0, realLen * 5);
+            System.arraycopy(azSet, 0, az, 0, realLen * 5);
+            System.arraycopy(gxSet, 0, gx, 0, realLen * 5);
+            System.arraycopy(gySet, 0, gy, 0, realLen * 5);
+            System.arraycopy(gzSet, 0, gz, 0, realLen * 5);
+            System.arraycopy(mxSet, 0, mx, 0, realLen * 5);
+            System.arraycopy(mySet, 0, my, 0, realLen * 5);
+            System.arraycopy(mzSet, 0, mz, 0, realLen * 5);
+            System.arraycopy(p1Set, 0, p1, 0, realLen * 5);
+            System.arraycopy(p2Set, 0, p2, 0, realLen * 5);
+            System.arraycopy(p3Set, 0, p3, 0, realLen * 5);
+            Log.e(TAG, "axSet: " + axSet.length);
+            Log.e(TAG, "mxSet: " + mxSet.length);
+            double[] time = new double[realLen * 5];
             sd.outputData(new DataSet(time, ax, ay, az, gx, gy, gz, mx, my, mz, p1, p2, p3));
-            Log.d(TAG,"成功存储");
-        }catch (Exception e){
-            Log.e(TAG,"存储失败");
+            Log.d(TAG, "成功存储");
+        } catch (Exception e) {
+            Log.e(TAG, "存储失败");
         }
     }
 
@@ -253,19 +249,19 @@ public class ExerciseFragment extends BluetoothFragment {
 //        timeText = (TextView) view.findViewById(R.id.time_textview);
 //        minus_b=(Button)view.findViewById(R.id.minus);
 //        clear_b=(Button)view.findViewById(R.id.clear);
-        actionList=(NbButton)view.findViewById(R.id.button_action_list);
+        actionList = (NbButton) view.findViewById(R.id.button_action_list);
 //        selectButton=(Button)view.findViewById(R.id.setExercise);
 //        lineCharta = (LineChart)view.findViewById(R.id.LineCharta);
-        lineChartg = (LineChart)view.findViewById(R.id.LineChartg);
+        lineChartg = (LineChart) view.findViewById(R.id.LineChartg);
 //        manualRecordButton = (ToggleButton)view.findViewById(R.id.manualRecord);
-        textPoint = (TextView)view.findViewById(R.id.text_point);
+        textPoint = (TextView) view.findViewById(R.id.text_point);
 //        textView_fileName = (TextView)view.findViewById(R.id.fileName);
-        totalTime_text=(TextView)view.findViewById(R.id.total_time);
-        selectGrade=(Button)view.findViewById(R.id.select_grade);
+        totalTime_text = (TextView) view.findViewById(R.id.total_time);
+        selectGrade = (Button) view.findViewById(R.id.select_grade);
         exerciseTotalTime = (TextView) view.findViewById(R.id.total_num);
-        tableLayout=(TableLayout)view.findViewById(R.id.SingleDataTable);
-        rlContent=(RelativeLayout)view.findViewById(R.id.rl_content);
-        currentActionImg=(ImageView)view.findViewById(R.id.currentActionImg);
+        tableLayout = (TableLayout) view.findViewById(R.id.SingleDataTable);
+        rlContent = (RelativeLayout) view.findViewById(R.id.rl_content);
+        currentActionImg = (ImageView) view.findViewById(R.id.currentActionImg);
     }
 
     @Override
@@ -284,8 +280,8 @@ public class ExerciseFragment extends BluetoothFragment {
     public void onStop() {
         super.onStop();
         Log.i(TAG, "onStop()");
-      // animator.cancel();
-       // rlContent.getBackground().setAlpha(0);
+        // animator.cancel();
+        // rlContent.getBackground().setAlpha(0);
         actionList.regainBackground();
     }
 
@@ -310,9 +306,10 @@ public class ExerciseFragment extends BluetoothFragment {
                 singleTime = bundle.getDouble(Conditions.DURATION);
                 assess = bundle.getDouble(Conditions.SET_SCORE);
                 dtw_score = bundle.getInt(Conditions.DTW_SCORE);
-                dtw=bundle.getInt(Conditions.DTW);
+                dtw = bundle.getInt(Conditions.DTW);
+                num_of_action_array = bundle.getIntArray(Conditions.NUM_OF_ACTION_ARRAY);
                 String message = bundle.getString(Conditions.TIME_TEST);
-                if (message!=null&&message!=""){
+                if (message != null && message != "") {
                     timeText.setText(message);
                 }
                 setExerciseAssess();
@@ -321,8 +318,8 @@ public class ExerciseFragment extends BluetoothFragment {
 //                time_Text_Manual.setText(String.valueOf(dtw_time_Manual));
 //                setActionNum(singleNum, dtw_score);
 
-                drawLineChart(false,bundle.getDoubleArray(Conditions.AX_TEST),bundle.getDoubleArray(Conditions.AY_TEST),bundle.getDoubleArray(Conditions.AZ_TEST),
-                        bundle.getDoubleArray(Conditions.GX_TEST),bundle.getDoubleArray(Conditions.GY_TEST),bundle.getDoubleArray(Conditions.GZ_TEST));
+                drawLineChart(false, bundle.getDoubleArray(Conditions.AX_TEST), bundle.getDoubleArray(Conditions.AY_TEST), bundle.getDoubleArray(Conditions.AZ_TEST),
+                        bundle.getDoubleArray(Conditions.GX_TEST), bundle.getDoubleArray(Conditions.GY_TEST), bundle.getDoubleArray(Conditions.GZ_TEST));
 
                /* if(!manualRecordButton.isChecked() && SingleExerciseAnalysis.selectedFlag_Manual)
                 {
@@ -353,9 +350,8 @@ public class ExerciseFragment extends BluetoothFragment {
         }
     }
 
-    private void drawLineChart(boolean isManual,double[]ax,double[]ay,double[]az,double[]gx,double[]gy,double[]gz)
-    {
-        if(ax == null || ay == null || az == null || gx == null || gy == null || gz == null)
+    private void drawLineChart(boolean isManual, double[] ax, double[] ay, double[] az, double[] gx, double[] gy, double[] gz) {
+        if (ax == null || ay == null || az == null || gx == null || gy == null || gz == null)
             return;
         List<Entry> ax_entries = new ArrayList<>();
         List<Entry> ay_entries = new ArrayList<>();
@@ -364,62 +360,61 @@ public class ExerciseFragment extends BluetoothFragment {
         List<Entry> gy_entries = new ArrayList<>();
         List<Entry> gz_entries = new ArrayList<>();
 
-        for(int i = 0;i<ax.length;i++)
-        {
-            ax_entries.add(new Entry(i+1,(float)ax[i]));
-            ay_entries.add(new Entry(i+1,(float)ay[i]));
-            az_entries.add(new Entry(i+1,(float)az[i]));
-            gx_entries.add(new Entry(i+1,(float)gx[i]));
-            gy_entries.add(new Entry(i+1,(float)gy[i]));
-            gz_entries.add(new Entry(i+1,(float)gz[i]));
+        for (int i = 0; i < ax.length; i++) {
+            ax_entries.add(new Entry(i + 1, (float) ax[i]));
+            ay_entries.add(new Entry(i + 1, (float) ay[i]));
+            az_entries.add(new Entry(i + 1, (float) az[i]));
+            gx_entries.add(new Entry(i + 1, (float) gx[i]));
+            gy_entries.add(new Entry(i + 1, (float) gy[i]));
+            gz_entries.add(new Entry(i + 1, (float) gz[i]));
         }
 
-        LineDataSet ax_dataSet = new LineDataSet(ax_entries,"ax");
-        ax_dataSet.setColor(Color.rgb(193,255,193));
-        ax_dataSet.setCircleColor(Color.rgb(193,255,193));
+        LineDataSet ax_dataSet = new LineDataSet(ax_entries, "ax");
+        ax_dataSet.setColor(Color.rgb(193, 255, 193));
+        ax_dataSet.setCircleColor(Color.rgb(193, 255, 193));
         ax_dataSet.setDrawCircles(false);
-        LineDataSet ay_dataSet = new LineDataSet(ay_entries,"ay");
-        ay_dataSet.setColor(Color.rgb(	240,128,128));
-        ay_dataSet.setCircleColor(Color.rgb(	240,128,128));
+        LineDataSet ay_dataSet = new LineDataSet(ay_entries, "ay");
+        ay_dataSet.setColor(Color.rgb(240, 128, 128));
+        ay_dataSet.setCircleColor(Color.rgb(240, 128, 128));
         ay_dataSet.setDrawCircles(false);
-        LineDataSet az_dataSet = new LineDataSet(az_entries,"az");
-        az_dataSet.setColor(Color.rgb(		0,178,238));
-        az_dataSet.setCircleColor(Color.rgb(		0,178,238));
+        LineDataSet az_dataSet = new LineDataSet(az_entries, "az");
+        az_dataSet.setColor(Color.rgb(0, 178, 238));
+        az_dataSet.setCircleColor(Color.rgb(0, 178, 238));
         az_dataSet.setDrawCircles(false);
-        LineDataSet gx_dataSet = new LineDataSet(gx_entries,"gx");
-        gx_dataSet.setColor(Color.rgb(	46,139,87));
-        gx_dataSet.setCircleColor(Color.rgb(	46,139,87));
+        LineDataSet gx_dataSet = new LineDataSet(gx_entries, "gx");
+        gx_dataSet.setColor(Color.rgb(46, 139, 87));
+        gx_dataSet.setCircleColor(Color.rgb(46, 139, 87));
         gx_dataSet.setDrawCircles(false);
-        LineDataSet gy_dataSet = new LineDataSet(gy_entries,"gy");
-        gy_dataSet.setColor(Color.rgb(	148,0,211));
-        gy_dataSet.setCircleColor(Color.rgb(	148,0,211));
+        LineDataSet gy_dataSet = new LineDataSet(gy_entries, "gy");
+        gy_dataSet.setColor(Color.rgb(148, 0, 211));
+        gy_dataSet.setCircleColor(Color.rgb(148, 0, 211));
         gy_dataSet.setDrawCircles(false);
-        LineDataSet gz_dataSet = new LineDataSet(gz_entries,"gz");
-        gz_dataSet.setColor(Color.rgb(	205,92,92));
-        gz_dataSet.setCircleColor(Color.rgb(	205,92,92));
+        LineDataSet gz_dataSet = new LineDataSet(gz_entries, "gz");
+        gz_dataSet.setColor(Color.rgb(205, 92, 92));
+        gz_dataSet.setCircleColor(Color.rgb(205, 92, 92));
         gz_dataSet.setDrawCircles(false);
 
-        List<ILineDataSet> dataSets = new ArrayList<>() ;
+        List<ILineDataSet> dataSets = new ArrayList<>();
         dataSets.add(ax_dataSet);
         dataSets.add(ay_dataSet);
         dataSets.add(az_dataSet);
         LineData data = new LineData(dataSets);
         Description d = new Description();
         d.setText("");
-        if(!isManual) {
+        if (!isManual) {
             /*lineCharta.setData(data);
             lineCharta.setDrawMarkers(false);
             lineCharta.setDescription(d);
             lineCharta.invalidate();*/
-            textPoint.setText("数据点个数:"+String.valueOf(ax.length));
+            textPoint.setText("数据点个数:" + String.valueOf(ax.length));
         }
 
-        dataSets = new ArrayList<>() ;
+        dataSets = new ArrayList<>();
         dataSets.add(gx_dataSet);
         dataSets.add(gy_dataSet);
         dataSets.add(gz_dataSet);
         data = new LineData(dataSets);
-        if(!isManual) {
+        if (!isManual) {
             lineChartg.setData(data);
             lineChartg.setDescription(d);
             lineChartg.setDrawMarkers(false);
@@ -461,14 +456,14 @@ public class ExerciseFragment extends BluetoothFragment {
             if (totalNum == t1 || totalNum == t2) {
                 sc = (int) Math.floor(Math.random() * 2 + 1);
             }
-            totalTime+=singleTime;
-            if(singleTime<=3)
-                Log.i(TAG,"SINGLETIME="+singleTime+" "+ (100/( ( 1.0+Math.pow(Math.E,(-1)*singleTime/0.4+3.75))*1.0)));
+            totalTime += singleTime;
+            if (singleTime <= 3)
+                Log.i(TAG, "SINGLETIME=" + singleTime + " " + (100 / ((1.0 + Math.pow(Math.E, (-1) * singleTime / 0.4 + 3.75)) * 1.0)));
             else
-                Log.i(TAG,"SINGLETIME="+singleTime+" "+(100/( ( 1.0+Math.pow(Math.E,(-1)*(6-singleTime)/0.4+3.75))*1.0)));
-            DecimalFormat df=new DecimalFormat("0.0");
+                Log.i(TAG, "SINGLETIME=" + singleTime + " " + (100 / ((1.0 + Math.pow(Math.E, (-1) * (6 - singleTime) / 0.4 + 3.75)) * 1.0)));
+            DecimalFormat df = new DecimalFormat("0.0");
             totalTime_text.setText(df.format(totalTime));
-            Log.i(TAG,"SingleTime="+singleTime+" "+dtw+" "+dtw_score);
+            Log.i(TAG, "SingleTime=" + singleTime + " " + dtw + " " + dtw_score);
             Log.i("TAG", "sc=" + sc);
 //           if (sc == 1)
 //               action_grade.setText("A" + "");
@@ -510,59 +505,46 @@ public class ExerciseFragment extends BluetoothFragment {
         if (type.equals("Alternate_Dumbbell_Curl_1")) {
             exerciseType.setText(Conditions.exercise_1);
             currentActionImg.setImageResource(R.drawable.action1);
-        }
-        else if(type.equals("Cable_Crossovers_2")){
+        } else if (type.equals("Cable_Crossovers_2")) {
             exerciseType.setText(Conditions.exercise_2);
             currentActionImg.setImageResource(R.drawable.action2);
-        }
-        else if (type.equals("Dumbbells_Alternate_Aammer_Curls_3")) {
+        } else if (type.equals("Dumbbells_Alternate_Aammer_Curls_3")) {
             exerciseType.setText(Conditions.exercise_3);
             currentActionImg.setImageResource(R.drawable.action3);
-        }
-        else if(type.equals("Bent_over_lateral_raise_4")){
+        } else if (type.equals("Bent_over_lateral_raise_4")) {
             exerciseType.setText(Conditions.exercise_4);
             currentActionImg.setImageResource(R.drawable.action4);
-        }
-        else if (type.equals("Flat_Bench_Barbell_Press_5")) {
+        } else if (type.equals("Flat_Bench_Barbell_Press_5")) {
             exerciseType.setText(Conditions.exercise_5);
             currentActionImg.setImageResource(R.drawable.action5);
-        }
-        else if (type.equals("Flat_Bench_Dumbbell_Flye_6")) {
+        } else if (type.equals("Flat_Bench_Dumbbell_Flye_6")) {
             exerciseType.setText(Conditions.exercise_6);
             currentActionImg.setImageResource(R.drawable.action6);
-        }
-        else if (type.equals("Bent_Over_Lateral_Raise_7")) {
+        } else if (type.equals("Bent_Over_Lateral_Raise_7")) {
             exerciseType.setText(Conditions.exercise_7);
             currentActionImg.setImageResource(R.drawable.action7);
-        }
-        else if (type.equals("Barbell_Bent_Over_Row_8")) {
+        } else if (type.equals("Barbell_Bent_Over_Row_8")) {
             exerciseType.setText(Conditions.exercise_8);
             currentActionImg.setImageResource(R.drawable.action8);
-        }
-        else if (type.equals("Barbell_Neck_After_Bending_9")) {
+        } else if (type.equals("Barbell_Neck_After_Bending_9")) {
             exerciseType.setText(Conditions.exercise_9);
             currentActionImg.setImageResource(R.drawable.action9);
-        }
-        else if (type.equals("Machine_Curls_10")) {
+        } else if (type.equals("Machine_Curls_10")) {
             exerciseType.setText(Conditions.exercise_10);
             currentActionImg.setImageResource(R.drawable.action10);
-        }
-        else if (type.equals("Pec_Deck_Flye_11")) {
+        } else if (type.equals("Pec_Deck_Flye_11")) {
             exerciseType.setText(Conditions.exercise_11);
             currentActionImg.setImageResource(R.drawable.action11);
-        }
-        else if (type.equals("Instruments_Made_Thoracic_Mobility_12")) {
+        } else if (type.equals("Instruments_Made_Thoracic_Mobility_12")) {
             exerciseType.setText(Conditions.exercise_12);
             currentActionImg.setImageResource(R.drawable.action12);
-        }
-        else if (type.equals("Reverse_Grip_Pulldown_13")) {
+        } else if (type.equals("Reverse_Grip_Pulldown_13")) {
             exerciseType.setText(Conditions.exercise_13);
             currentActionImg.setImageResource(R.drawable.action13);
         } else if (type.equals("One_Arm_Dumbell_Row_14")) {
             exerciseType.setText(Conditions.exercise_14);
             currentActionImg.setImageResource(R.drawable.action14);
-        }
-        else if (type.equals("Dumbbell_Is_The_Shoulder_15")) {
+        } else if (type.equals("Dumbbell_Is_The_Shoulder_15")) {
             exerciseType.setText(Conditions.exercise_15);
             currentActionImg.setImageResource(R.drawable.action15);
         }
@@ -588,7 +570,6 @@ public class ExerciseFragment extends BluetoothFragment {
         } else
             exerciseType.setText("无动作");
     }
-
 
 
     private class ToggleClickListener implements View.OnClickListener {
@@ -644,33 +625,33 @@ public class ExerciseFragment extends BluetoothFragment {
                         @Override
                         public void run() {
                             actionList.gotoNew();
-                            final Intent intent=new Intent(getActivity(),ActionListActivity.class);
+                            final Intent intent = new Intent(getActivity(), ActionListActivity.class);
                             startActivity(intent);
                         }
-                    },200);
+                    }, 200);
                     break;
                 case R.id.select_grade:
                     singleChiose();
                     break;
             }
-
         }
-        private void minus(){
-            Log.i(TAG,"minus()");
 
-            if(totalNum>0){
+        private void minus() {
+            Log.i(TAG, "minus()");
+
+            if (totalNum > 0) {
                 totalNum--;
             }
 //            exerciseTotalNumber.setText(totalNum + "");
             exerciseNumber.setText(totalNum + "");
         }
 
-        private void clear(){
-            Log.i(TAG,"clear()");
-            totalNum=0;
+        private void clear() {
+            Log.i(TAG, "clear()");
+            totalNum = 0;
             // oldNum=0;
-            t1=  (int)Math.floor(Math.random()*20 + 1);
-            t2=  (int)Math.floor(Math.random()*20 + 1);
+            t1 = (int) Math.floor(Math.random() * 20 + 1);
+            t2 = (int) Math.floor(Math.random() * 20 + 1);
 //            exerciseTotalNumber.setText(totalNum + "");
             exerciseNumber.setText(totalNum + "");
         }
@@ -678,12 +659,13 @@ public class ExerciseFragment extends BluetoothFragment {
 
     /**
      * 以下是用于修改该布局中表格的数据
+     *
      * @param bundle
      */
 
-    private void setTablelayoutContent(Bundle bundle){
+    private void setTablelayoutContent(Bundle bundle) {
 
-        if(singleNum<=10) {
+        if (singleNum <= 10) {
             groupMaxTime1 = bundle.getFloat(Conditions.GROUP_MAX_TIME1);
             groupMinTime1 = bundle.getFloat(Conditions.GROUP_MIN_TIME1);
             groupAveTime1 = bundle.getFloat(Conditions.GROUP_AVE_TIME1);
@@ -701,8 +683,7 @@ public class ExerciseFragment extends BluetoothFragment {
             if (groupMinTime1 >= 99999) minTime = "0.00" + "";
             contentList.set(1, new DataTableActivity.Content("第一组", maxTime, minTime, aveTime, maxDtw, minDtw, aveDtw));
             firstRowAsTitle();
-        }
-        else if(singleNum>=11 &&singleNum<=20){
+        } else if (singleNum >= 11 && singleNum <= 20) {
             groupMaxTime2 = bundle.getFloat(Conditions.GROUP_MAX_TIME2);
             groupMinTime2 = bundle.getFloat(Conditions.GROUP_MIN_TIME2);
             groupAveTime2 = bundle.getFloat(Conditions.GROUP_AVE_TIME2);
@@ -720,8 +701,7 @@ public class ExerciseFragment extends BluetoothFragment {
             if (groupMinTime2 >= 99999) minTime = "0.00" + "";
             contentList.set(1, new DataTableActivity.Content("第二组", maxTime, minTime, aveTime, maxDtw, minDtw, aveDtw));
             firstRowAsTitle();
-        }
-        else {
+        } else {
             groupMaxTime3 = bundle.getFloat(Conditions.GROUP_MAX_TIME3);
             groupMinTime3 = bundle.getFloat(Conditions.GROUP_MIN_TIME3);
             groupAveTime3 = bundle.getFloat(Conditions.GROUP_AVE_TIME3);
@@ -742,41 +722,58 @@ public class ExerciseFragment extends BluetoothFragment {
         }
     }
 
-    private void sendDataToTable(){
-        SPUtils.put(Conditions.GROUP_MAX_TIME1,new Float(groupMaxTime1));
-        SPUtils.put(Conditions.GROUP_MIN_TIME1,new Float(groupMinTime1));
-        SPUtils.put(Conditions.GROUP_AVE_TIME1,new Float(groupAveTime1));
-        SPUtils.put(Conditions.GROUP_MAX_DTW1,new Float(groupMaxDtw1));
-        SPUtils.put(Conditions.GROUP_MIN_DTW1,new Float(groupMinDtw1));
-        SPUtils.put(Conditions.GROUP_AVE_DTW1,new Float(groupAveDtw1));
+    private void sendDataToTable() {
+        SPUtils.put(Conditions.GROUP_MAX_TIME1, new Float(groupMaxTime1));
+        SPUtils.put(Conditions.GROUP_MIN_TIME1, new Float(groupMinTime1));
+        SPUtils.put(Conditions.GROUP_AVE_TIME1, new Float(groupAveTime1));
+        SPUtils.put(Conditions.GROUP_MAX_DTW1, new Float(groupMaxDtw1));
+        SPUtils.put(Conditions.GROUP_MIN_DTW1, new Float(groupMinDtw1));
+        SPUtils.put(Conditions.GROUP_AVE_DTW1, new Float(groupAveDtw1));
 
-        SPUtils.put(Conditions.GROUP_MAX_TIME2,new Float(groupMaxTime2));
-        SPUtils.put(Conditions.GROUP_MIN_TIME2,new Float(groupMinTime2));
-        SPUtils.put(Conditions.GROUP_AVE_TIME2,new Float(groupAveTime2));
-        SPUtils.put(Conditions.GROUP_MAX_DTW2,new Float(groupMaxDtw2));
-        SPUtils.put(Conditions.GROUP_MIN_DTW2,new Float(groupMinDtw2));
-        SPUtils.put(Conditions.GROUP_AVE_DTW2,new Float(groupAveDtw2));
+        SPUtils.put(Conditions.GROUP_MAX_TIME2, new Float(groupMaxTime2));
+        SPUtils.put(Conditions.GROUP_MIN_TIME2, new Float(groupMinTime2));
+        SPUtils.put(Conditions.GROUP_AVE_TIME2, new Float(groupAveTime2));
+        SPUtils.put(Conditions.GROUP_MAX_DTW2, new Float(groupMaxDtw2));
+        SPUtils.put(Conditions.GROUP_MIN_DTW2, new Float(groupMinDtw2));
+        SPUtils.put(Conditions.GROUP_AVE_DTW2, new Float(groupAveDtw2));
 
-        SPUtils.put(Conditions.GROUP_MAX_TIME3,new Float(groupMaxTime3));
-        SPUtils.put(Conditions.GROUP_MIN_TIME3,new Float(groupMinTime3));
-        SPUtils.put(Conditions.GROUP_AVE_TIME3,new Float(groupAveTime3));
-        SPUtils.put(Conditions.GROUP_MAX_DTW3,new Float(groupMaxDtw3));
-        SPUtils.put(Conditions.GROUP_MIN_DTW3,new Float(groupMinDtw3));
-        SPUtils.put(Conditions.GROUP_AVE_DTW3,new Float(groupAveDtw3));
+        SPUtils.put(Conditions.GROUP_MAX_TIME3, new Float(groupMaxTime3));
+        SPUtils.put(Conditions.GROUP_MIN_TIME3, new Float(groupMinTime3));
+        SPUtils.put(Conditions.GROUP_AVE_TIME3, new Float(groupAveTime3));
+        SPUtils.put(Conditions.GROUP_MAX_DTW3, new Float(groupMaxDtw3));
+        SPUtils.put(Conditions.GROUP_MIN_DTW3, new Float(groupMinDtw3));
+        SPUtils.put(Conditions.GROUP_AVE_DTW3, new Float(groupAveDtw3));
 
-        SPUtils.put(Conditions.ACTION_NUM,new Integer(singleNum));
+        SPUtils.put(Conditions.ACTION_NUM, new Integer(singleNum));
+
+        SPUtils.put(Conditions.exercise_1, new Integer(num_of_action_array[0]));
+        SPUtils.put(Conditions.exercise_2, new Integer(num_of_action_array[1]));
+        SPUtils.put(Conditions.exercise_3, new Integer(num_of_action_array[2]));
+        SPUtils.put(Conditions.exercise_4, new Integer(num_of_action_array[3]));
+        SPUtils.put(Conditions.exercise_5, new Integer(num_of_action_array[4]));
+        SPUtils.put(Conditions.exercise_6, new Integer(num_of_action_array[5]));
+        SPUtils.put(Conditions.exercise_7, new Integer(num_of_action_array[6]));
+        SPUtils.put(Conditions.exercise_8, new Integer(num_of_action_array[7]));
+        SPUtils.put(Conditions.exercise_9, new Integer(num_of_action_array[8]));
+        SPUtils.put(Conditions.exercise_10, new Integer(num_of_action_array[9]));
+        SPUtils.put(Conditions.exercise_11, new Integer(num_of_action_array[10]));
+        SPUtils.put(Conditions.exercise_12, new Integer(num_of_action_array[11]));
+        SPUtils.put(Conditions.exercise_13, new Integer(num_of_action_array[12]));
+        SPUtils.put(Conditions.exercise_14, new Integer(num_of_action_array[13]));
+        SPUtils.put(Conditions.exercise_15, new Integer(num_of_action_array[14]));
+
     }
 
-    private void initContent(){
+    private void initContent() {
         contentList = new ArrayList<>();
-        contentList.add(new DataTableActivity.Content( "   ","最大", "最小", "均值", "最大", "最小","均值"));
-        contentList.add(new DataTableActivity.Content("本组","0.00", "0.00" ,"0.00", "0.00", "0.00","0.00" ) );
+        contentList.add(new DataTableActivity.Content("   ", "最大", "最小", "均值", "最大", "最小", "均值"));
+        contentList.add(new DataTableActivity.Content("本组", "0.00", "0.00", "0.00", "0.00", "0.00", "0.00"));
     }
 
     private void firstRowAsTitle() {
         //fields是表格中要显示的数据对应到Content类中的成员变量名，其定义顺序要与表格中显示的相同
-        final String[] fields= {"空","最大s", "最小s", "均值s", "最大", "最小", "均值"};
-        TableAdapter adapter=new TableAdapter() {
+        final String[] fields = {"空", "最大s", "最小s", "均值s", "最大", "最小", "均值"};
+        TableAdapter adapter = new TableAdapter() {
             @Override
             public int getColumnCount() {
                 return fields.length;
@@ -805,12 +802,11 @@ public class ExerciseFragment extends BluetoothFragment {
     }
 
 
-
-    public void initLineChartContent(){
+    public void initLineChartContent() {
 
         //设置x轴的数据
         ArrayList<Float> xValues = new ArrayList<>();
-        for (int i = 0; i <1; i++) {
+        for (int i = 0; i < 1; i++) {
             xValues.add((float) i);
         }
 
@@ -818,7 +814,7 @@ public class ExerciseFragment extends BluetoothFragment {
         List<List<Float>> y1Values = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
             List<Float> y1Value = new ArrayList<>();
-            for (int j = 0; j <1; j++) {
+            for (int j = 0; j < 1; j++) {
                 y1Value.add(0.0f);
             }
             y1Values.add(y1Value);
@@ -827,7 +823,7 @@ public class ExerciseFragment extends BluetoothFragment {
         List<List<Float>> y2Values = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
             List<Float> y2Value = new ArrayList<>();
-            for (int j = 0; j <1; j++) {
+            for (int j = 0; j < 1; j++) {
                 y2Value.add(0.0f);
             }
             y2Values.add(y2Value);
@@ -845,7 +841,7 @@ public class ExerciseFragment extends BluetoothFragment {
         names1.add("ax");
         names1.add("ay");
         names1.add("az");
-        List<String> names2=new ArrayList<>();
+        List<String> names2 = new ArrayList<>();
         names2.add("gx");
         names2.add("gy");
         names2.add("gz");
@@ -855,12 +851,13 @@ public class ExerciseFragment extends BluetoothFragment {
         lineChartManager1.setDescription("加速度");
         lineChartManager1.setYAxis(15, -15, 10);*/
 
-        lineChartManager2.showLineChart(xValues, y2Values,names2, colours);
+        lineChartManager2.showLineChart(xValues, y2Values, names2, colours);
         lineChartManager2.setYAxis(200, -200, 10);
         lineChartManager2.setDescription("重力加速度");
     }
+
     private void singleChiose() {
-        final String []grades={"初级","中级","高级"};
+        final String[] grades = {"初级", "中级", "高级"};
         mBuilder = new MaterialDialog.Builder(getContext());
         mBuilder.title("选择健身等级");
         mBuilder.titleGravity(GravityEnum.CENTER);
@@ -885,8 +882,8 @@ public class ExerciseFragment extends BluetoothFragment {
                     Toast.makeText(getContext(), text, Toast.LENGTH_SHORT).show();
                     dialog.dismiss();
                     selectGrade.setText(grades[which]);
-                    String grade=grades[which];
-                    SPUtils.put(Conditions.User_grade,grade);
+                    String grade = grades[which];
+                    SPUtils.put(Conditions.User_grade, grade);
                 }
                 return false;
             }

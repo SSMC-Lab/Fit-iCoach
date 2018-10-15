@@ -8,22 +8,18 @@ import java.io.File;
 
 
 public class App extends Application {
-    private static final String TAG="APP";
+    private static final String TAG = "APP";
 
     /*static{
         System.loadLibrary("NativeHelper");
     }*/
 
     @Override
-    public void onCreate(){
+    public void onCreate() {
         super.onCreate();
         Log.i(TAG, "onCreate()");
 
-        File appDir=new File(Conditions.APP_FILE_DIR);
+        File appDir = new File(Conditions.APP_FILE_DIR);
         appDir.mkdirs();
     }
-
-
-
-
 }

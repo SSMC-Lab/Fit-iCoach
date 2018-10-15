@@ -46,7 +46,7 @@ public class SingleExerciseAnalysis implements ExerciseAnalysis {
     private SingleExerciseScore score;
     private long itemsNumber = 0;//记录从蓝牙设备中已经读取的数据条目数量
 
-    private StorageData storageData=new StorageData(); // 存放数据到文件里的对象
+    private StorageData storageData = new StorageData(); // 存放数据到文件里的对象
 
     private int currentTimes = -1;   //指示用户当前做了多少个健身动作
     private int Nsamples = 0;   //传进来的数组的长度
@@ -61,7 +61,7 @@ public class SingleExerciseAnalysis implements ExerciseAnalysis {
     private static final int MinSamples = Conditions.MIN_SAMPLES_OF_ACTIONS;     //单个动作中允许的最小samples
     private int firstrun = 0;     ///
     private double dataBuf[] = new double[span];  ///会随着firstrun的没设置好而发错误
-    private ExerciseType exerciseType, exerciseTypeManual,exerciseTypeForBack,exerciseType_group2,exerciseType_group3,exerciseType_group4,exerciseType_fastDTW;
+    private ExerciseType exerciseType, exerciseTypeManual, exerciseTypeForBack, exerciseType_group2, exerciseType_group3, exerciseType_group4, exerciseType_fastDTW;
     private double[][] repetitionScore = new double[Conditions.NUM_PRE_EXERCISE][];
     private double singleScore;
 
@@ -94,37 +94,39 @@ public class SingleExerciseAnalysis implements ExerciseAnalysis {
 
     private boolean isRecordSegmentStart = false;
     private double start, end, time;
-    private double dtw_start,dtw_end,dtw_time;
-    private double dtw_start_Manual,dtw_end_Manual,dtw_time_Manual;
-    private double dtw_start_forBack,dtw_end_forBack,dtw_time_forBack;
-    private double dtw_start_group2,dtw_end_group2,dtw_time_group2;
-    private double dtw_start_group3,dtw_end_group3,dtw_time_group3;
-    private double dtw_start_group4,dtw_end_group4,dtw_time_group4;
-    private double dtw_start_fastdtw,dtw_end_fastdtw,dtw_time_fastdtw;
+    private double dtw_start, dtw_end, dtw_time;
+    private double dtw_start_Manual, dtw_end_Manual, dtw_time_Manual;
+    private double dtw_start_forBack, dtw_end_forBack, dtw_time_forBack;
+    private double dtw_start_group2, dtw_end_group2, dtw_time_group2;
+    private double dtw_start_group3, dtw_end_group3, dtw_time_group3;
+    private double dtw_start_group4, dtw_end_group4, dtw_time_group4;
+    private double dtw_start_fastdtw, dtw_end_fastdtw, dtw_time_fastdtw;
     private double calStart, calEnd, calTime = 0;
     private boolean isBeginTiming = false;
     private final static double INTERVAL_OF_ONE_ACTION = 500; //单位ms
 
-    private double SingleStartTime=0,SingleEndTime=0,SingleDuration=0;
-    private float GroupMaxTime1=0,GroupMinTime1=99999,GroupSumTime1=0;
-    private float GroupMaxDtw1=0.0f,GroupMinDtw1=99999,GroupSumDtw1=0.0f;
-    private float GroupMaxTime2=0,GroupMinTime2=99999,GroupSumTime2=0;
-    private float GroupMaxDtw2=0.0f,GroupMinDtw2=99999,GroupSumDtw2=0.0f;
-    private float GroupMaxTime3=0,GroupMinTime3=99999,GroupSumTime3=0;
-    private float GroupMaxDtw3=0.0f,GroupMinDtw3=99999,GroupSumDtw3=0.0f;
+    private double SingleStartTime = 0, SingleEndTime = 0, SingleDuration = 0;
+    private float GroupMaxTime1 = 0, GroupMinTime1 = 99999, GroupSumTime1 = 0;
+    private float GroupMaxDtw1 = 0.0f, GroupMinDtw1 = 99999, GroupSumDtw1 = 0.0f;
+    private float GroupMaxTime2 = 0, GroupMinTime2 = 99999, GroupSumTime2 = 0;
+    private float GroupMaxDtw2 = 0.0f, GroupMinDtw2 = 99999, GroupSumDtw2 = 0.0f;
+    private float GroupMaxTime3 = 0, GroupMinTime3 = 99999, GroupSumTime3 = 0;
+    private float GroupMaxDtw3 = 0.0f, GroupMinDtw3 = 99999, GroupSumDtw3 = 0.0f;
 
-    private float SingleAveDtw=0;
-    private double totalTime=0;
+    private float SingleAveDtw = 0;
+    private double totalTime = 0;
 
     private int EIGHT_OR_FOURTEEN = 0;    //区分8 14
     private int ONE_OR_FIVE = 0;  //区分1 10
     private int NUM_OF_ACTION = 0;
-    private int NUM1_OF_ACTION=0;
-    private int NUM2_OF_ACTION=0;
-    private int NUM3_OF_ACTION=0;
+    private int NUM1_OF_ACTION = 0;
+    private int NUM2_OF_ACTION = 0;
+    private int NUM3_OF_ACTION = 0;
+    private int[] NUM_OF_ACTION_ARRAY = new int[15];
+
 
     private int SINGLE_DTW_SCORE = 0;
-    private int SINGLE_DTW=0;
+    private int SINGLE_DTW = 0;
     private DynamicTimeWarping dtw;
     private int exerciseTypeNum = -1;
     private int exerciseTypeNum_Manual = -1;
@@ -487,28 +489,28 @@ public class SingleExerciseAnalysis implements ExerciseAnalysis {
             }
         }
 
-        if(hasReadManualModelData == false){
-            if(loadModelData_Manual() == true){
+        if (hasReadManualModelData == false) {
+            if (loadModelData_Manual() == true) {
                 hasReadManualModelData = true;
-            }else{
+            } else {
                 Log.e(TAG, "load modelData_Manual failure");
                 return;
             }
         }
 
-        if(hasReadManualModelData_Left == false){
-            if(loadModelData_Left() == true){
+        if (hasReadManualModelData_Left == false) {
+            if (loadModelData_Left() == true) {
                 hasReadManualModelData_Left = true;
-            }else{
+            } else {
                 Log.e(TAG, "load modelData_Manual failure");
                 return;
             }
         }
 
-        if(hasReadManualModelData_Right == false){
-            if(loadModelData_Right() == true){
+        if (hasReadManualModelData_Right == false) {
+            if (loadModelData_Right() == true) {
                 hasReadManualModelData_Right = true;
-            }else{
+            } else {
                 Log.e(TAG, "load modelData_Manual failure");
                 return;
             }
@@ -520,17 +522,17 @@ public class SingleExerciseAnalysis implements ExerciseAnalysis {
             Log.i(TAG,"ax_test[i]="+ax_test[i]+" ay_test[i]="+ay_test[i]+" az_test[i]="+az_test[i]);
             Log.e(TAG,"ax_mol[i]="+ax_mol[0][i]+" ay_mol[i]="+ay_mol[0][i]+" az_mol[i]="+az_mol[0][i]);
         }*/
-        int p[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,16,17,18,19,20};
-        double minDis1 = 10000000.0, minDis2 = 10000000.0,minDis3 = 10000000.0, minDis4 = 10000000.0,minDis5 = 10000000.0, minDis6 = 10000000.0, minDis7 = 10000000.0;//记录Dist最小的动作标号
-        int minIndex1 = 1, minIndex2 = 1,minIndex3 = 1, minIndex4 = 1,minIndex5 = 1, minIndex6 = 1,minIndex7 = 1;
+        int p[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
+        double minDis1 = 10000000.0, minDis2 = 10000000.0, minDis3 = 10000000.0, minDis4 = 10000000.0, minDis5 = 10000000.0, minDis6 = 10000000.0, minDis7 = 10000000.0;//记录Dist最小的动作标号
+        int minIndex1 = 1, minIndex2 = 1, minIndex3 = 1, minIndex4 = 1, minIndex5 = 1, minIndex6 = 1, minIndex7 = 1;
         dtw_start = System.currentTimeMillis();
         //recordStart();
 
         int axis = chooseAxis();
-        Log.i(TAG, "ExerciseRecognition: axis"+axis);
+        Log.i(TAG, "ExerciseRecognition: axis" + axis);
         int idx = rms_MaxToMin(axis);
-        Log.i(TAG, "ExerciseRecognition: idx"+idx);
-        if(idx == 0){
+        Log.i(TAG, "ExerciseRecognition: idx" + idx);
+        if (idx == 0) {
             dtw_time_forBack = 0;
             dtw_time = 0;
             dtw_time_group3 = 0;
@@ -631,18 +633,18 @@ public class SingleExerciseAnalysis implements ExerciseAnalysis {
             dtwResults.clear();
             Log.i(TAG, "num=" + num);
 
-            double[] ax_test_beta = new double[idx*5];
-            double[] ay_test_beta = new double[idx*5];
-            double[] az_test_beta = new double[idx*5];
-            double[] gx_test_beta = new double[idx*5];
-            double[] gy_test_beta = new double[idx*5];
-            double[] gz_test_beta = new double[idx*5];
-            System.arraycopy(ax_test,0,ax_test_beta,0,idx*5);
-            System.arraycopy(ay_test,0,ay_test_beta,0,idx*5);
-            System.arraycopy(az_test,0,az_test_beta,0,idx*5);
-            System.arraycopy(gx_test,0,gx_test_beta,0,idx*5);
-            System.arraycopy(gy_test,0,gy_test_beta,0,idx*5);
-            System.arraycopy(gz_test,0,gz_test_beta,0,idx*5);
+            double[] ax_test_beta = new double[idx * 5];
+            double[] ay_test_beta = new double[idx * 5];
+            double[] az_test_beta = new double[idx * 5];
+            double[] gx_test_beta = new double[idx * 5];
+            double[] gy_test_beta = new double[idx * 5];
+            double[] gz_test_beta = new double[idx * 5];
+            System.arraycopy(ax_test, 0, ax_test_beta, 0, idx * 5);
+            System.arraycopy(ay_test, 0, ay_test_beta, 0, idx * 5);
+            System.arraycopy(az_test, 0, az_test_beta, 0, idx * 5);
+            System.arraycopy(gx_test, 0, gx_test_beta, 0, idx * 5);
+            System.arraycopy(gy_test, 0, gy_test_beta, 0, idx * 5);
+            System.arraycopy(gz_test, 0, gz_test_beta, 0, idx * 5);
 
             dtwResults.add(exec.submit(new DTWTask(dtw, ax_mol_left[i], num, ax_test_beta)));
             dtwResults.add(exec.submit(new DTWTask(dtw, ay_mol_left[i], num, ay_test_beta)));
@@ -651,18 +653,18 @@ public class SingleExerciseAnalysis implements ExerciseAnalysis {
             dtwResults.add(exec.submit(new DTWTask(dtw, gy_mol_left[i], num, gy_test_beta)));
             dtwResults.add(exec.submit(new DTWTask(dtw, gz_mol_left[i], num, gz_test_beta)));
 
-            double[] ax_test_betar = new double[ax_test.length-idx*5];
-            double[] ay_test_betar = new double[ax_test.length-idx*5];
-            double[] az_test_betar = new double[ax_test.length-idx*5];
-            double[] gx_test_betar = new double[ax_test.length-idx*5];
-            double[] gy_test_betar = new double[ax_test.length-idx*5];
-            double[] gz_test_betar = new double[ax_test.length-idx*5];
-            System.arraycopy(ax_test,idx*5,ax_test_betar,0,ax_test.length-idx*5);
-            System.arraycopy(ay_test,idx*5,ay_test_betar,0,ay_test.length-idx*5);
-            System.arraycopy(az_test,idx*5,az_test_betar,0,az_test.length-idx*5);
-            System.arraycopy(gx_test,idx*5,gx_test_betar,0,gx_test.length-idx*5);
-            System.arraycopy(gy_test,idx*5,gy_test_betar,0,gy_test.length-idx*5);
-            System.arraycopy(gz_test,idx*5,gz_test_betar,0,gz_test.length-idx*5);
+            double[] ax_test_betar = new double[ax_test.length - idx * 5];
+            double[] ay_test_betar = new double[ax_test.length - idx * 5];
+            double[] az_test_betar = new double[ax_test.length - idx * 5];
+            double[] gx_test_betar = new double[ax_test.length - idx * 5];
+            double[] gy_test_betar = new double[ax_test.length - idx * 5];
+            double[] gz_test_betar = new double[ax_test.length - idx * 5];
+            System.arraycopy(ax_test, idx * 5, ax_test_betar, 0, ax_test.length - idx * 5);
+            System.arraycopy(ay_test, idx * 5, ay_test_betar, 0, ay_test.length - idx * 5);
+            System.arraycopy(az_test, idx * 5, az_test_betar, 0, az_test.length - idx * 5);
+            System.arraycopy(gx_test, idx * 5, gx_test_betar, 0, gx_test.length - idx * 5);
+            System.arraycopy(gy_test, idx * 5, gy_test_betar, 0, gy_test.length - idx * 5);
+            System.arraycopy(gz_test, idx * 5, gz_test_betar, 0, gz_test.length - idx * 5);
 
             num = num_mol_Right[i];
             dtwResults.add(exec.submit(new DTWTask(dtw, ax_mol_right[i], num, ax_test_betar)));
@@ -675,7 +677,7 @@ public class SingleExerciseAnalysis implements ExerciseAnalysis {
             for (int j = 0; j < dimension; j++) {
                 try {
                     Dist[i] += dtwResults.get(j).get();
-                    Dist[i] += dtwResults.get(j+6).get();
+                    Dist[i] += dtwResults.get(j + 6).get();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } catch (ExecutionException e) {
@@ -683,7 +685,7 @@ public class SingleExerciseAnalysis implements ExerciseAnalysis {
                 }
             }
 
-            SingleAveDtw+=Dist[i];
+            SingleAveDtw += Dist[i];
             Log.i(TAG, "Dist[" + (i + 1) + "]=" + Dist[i]);
             //同时找出两个最小的dtw值，并且记录下对应的动作
             if (Dist[i] < minDis2) {
@@ -770,34 +772,32 @@ public class SingleExerciseAnalysis implements ExerciseAnalysis {
         setExerciseType_fastDTW(p[minIndex7 - 1]);*/
         double TimeEnd = System.currentTimeMillis();
 
-        SingleAveDtw/=15;
+        SingleAveDtw /= 15;
         OutputData();
         storageData.outputType(exerciseTypeNum);
         storageData.outputDTW(minDis2);
-        if(minDis1<1100)
-            SINGLE_DTW_SCORE=0;
+        if (minDis1 < 1100)
+            SINGLE_DTW_SCORE = 0;
         else
-            SINGLE_DTW_SCORE=(int)  (100/( ( 1+Math.pow(Math.E,minDis2/(2000*1.0)-5.0))*1.0)  );
-        Log.i(TAG,"SINGLE_DTW_SCORE="+SINGLE_DTW_SCORE+" dtw="+minDis2+" "+(100/( ( 1+Math.pow(Math.E,minDis2/(2000*0.1)-5.0))*1.0)  ));
-        SINGLE_DTW=(int)minDis2;
-        Log.i(TAG,"DTW=="+minDis2);
-        if(NUM_OF_ACTION<=10) {
+            SINGLE_DTW_SCORE = (int) (100 / ((1 + Math.pow(Math.E, minDis2 / (2000 * 1.0) - 5.0)) * 1.0));
+        Log.i(TAG, "SINGLE_DTW_SCORE=" + SINGLE_DTW_SCORE + " dtw=" + minDis2 + " " + (100 / ((1 + Math.pow(Math.E, minDis2 / (2000 * 0.1) - 5.0)) * 1.0)));
+        SINGLE_DTW = (int) minDis2;
+        Log.i(TAG, "DTW==" + minDis2);
+        if (NUM_OF_ACTION <= 10) {
             if (minDis2 > GroupMaxDtw1)
                 GroupMaxDtw1 = (float) minDis2;
             if (minDis2 < GroupMinDtw1)
                 GroupMinDtw1 = (float) minDis2;
             GroupSumDtw1 += minDis2;
             NUM1_OF_ACTION++;
-        }
-        else if(NUM_OF_ACTION>=11&&NUM_OF_ACTION<=20){
+        } else if (NUM_OF_ACTION >= 11 && NUM_OF_ACTION <= 20) {
             if (minDis2 > GroupMaxDtw2)
                 GroupMaxDtw2 = (float) minDis2;
             if (minDis2 < GroupMinDtw2)
                 GroupMinDtw2 = (float) minDis2;
             GroupSumDtw2 += minDis2;
             NUM2_OF_ACTION++;
-        }
-        else if(NUM_OF_ACTION>=20){
+        } else if (NUM_OF_ACTION >= 20) {
             if (minDis2 > GroupMaxDtw3)
                 GroupMaxDtw3 = (float) minDis2;
             if (minDis2 < GroupMinDtw3)
@@ -844,19 +844,18 @@ public class SingleExerciseAnalysis implements ExerciseAnalysis {
      */
     public boolean addToSet(DataSet dataSet) {
 
-        filter(dataSet,dataBefore); //虑噪
+        filter(dataSet, dataBefore); //虑噪
 
-        if(dataBufferManual_isStart)
-        {
+        if (dataBufferManual_isStart) {
             selectedFlag_Manual = false;
             dataBufferManual.add(dataSet);
             count++;
-        }else{
-            Log.d(TAG,"do not addToManual");
-            if(!dataBufferManual.isEmpty()) {
-                selectedDataSet_Manual = new SelectedDataSet(dataBufferManual.toDataSet(), 0, 1, 2, 3, 4, 5,6,7,8,9,10,11);
+        } else {
+            Log.d(TAG, "do not addToManual");
+            if (!dataBufferManual.isEmpty()) {
+                selectedDataSet_Manual = new SelectedDataSet(dataBufferManual.toDataSet(), 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11);
                 selectedFlag_Manual = true;
-                Log.e(TAG,"count : "+count);
+                Log.e(TAG, "count : " + count);
                 count = 0;
             }
             dataBufferManual.clear();
@@ -870,7 +869,7 @@ public class SingleExerciseAnalysis implements ExerciseAnalysis {
             return true;
         }
 
-        if ( !hasCollected ) {
+        if (!hasCollected) {
             start = System.currentTimeMillis();
             //filter(dataSet,dataBefore);    //虑噪
             end = System.currentTimeMillis();
@@ -879,7 +878,7 @@ public class SingleExerciseAnalysis implements ExerciseAnalysis {
 
 
             //收集一开始的50组数据作为阈值
-            if (!hasCollectedStaticData ) {
+            if (!hasCollectedStaticData) {
                 collectStaticData(dataSet);
                 return true;
             }
@@ -890,13 +889,13 @@ public class SingleExerciseAnalysis implements ExerciseAnalysis {
             }
 
             //判断是否符合切割条件，若符合，则存数据，否则不断覆盖数据
-            if (isBelongSegments(dataSet,1) == true) {
+            if (isBelongSegments(dataSet, 1) == true) {
 
                 if (!isRecordSegmentStart) {//如果是第一次符合切割条件，记录第一个切割点
                     isRecordSegmentStart = true;
                     reset_Max_Min();
-                    double time[]=dataSet.getTime();
-                    SingleStartTime=time[0];
+                    double time[] = dataSet.getTime();
+                    SingleStartTime = time[0];
                 }
                 dataBuffer.add(dataSet);
                 choose_Max_Min(dataSet);
@@ -910,8 +909,8 @@ public class SingleExerciseAnalysis implements ExerciseAnalysis {
             } else {//每一个动作结束之后会到这
                 notBeginProcess();
                 isRecordSegmentStart = false;
-                double time[]=dataSet.getTime();
-                SingleEndTime=time[0];
+                double time[] = dataSet.getTime();
+                SingleEndTime = time[0];
                 Log.i(TAG, "segment end in [" + (itemsNumber - 50) + "," + itemsNumber + "]");
                 return false;
             }
@@ -921,30 +920,28 @@ public class SingleExerciseAnalysis implements ExerciseAnalysis {
         }
     }
 
-    private void OutputData(){  //将时间存到本地
+    private void OutputData() {  //将时间存到本地
         storageData.outputBeginTime(SingleStartTime);
         storageData.outputEndTime(SingleEndTime);
-        Log.i(TAG,"Time="+SingleStartTime+" "+SingleEndTime);
-        SingleDuration=SingleEndTime-SingleStartTime;
-        totalTime=totalTime+SingleDuration;
+        Log.i(TAG, "Time=" + SingleStartTime + " " + SingleEndTime);
+        SingleDuration = SingleEndTime - SingleStartTime;
+        totalTime = totalTime + SingleDuration;
         storageData.outputDuration(SingleDuration);
-        Log.i(TAG,"single=="+NUM_OF_ACTION);
-        if(NUM_OF_ACTION<=10) {
+        Log.i(TAG, "single==" + NUM_OF_ACTION);
+        if (NUM_OF_ACTION <= 10) {
             if (SingleDuration > GroupMaxTime1)
                 GroupMaxTime1 = (float) SingleDuration;
             if (SingleDuration < GroupMinTime1)
                 GroupMinTime1 = (float) SingleDuration;
             GroupSumTime1 += SingleDuration;
-        }
-        else if(NUM_OF_ACTION>=11 &&NUM_OF_ACTION<=20) {
-            Log.i(TAG,"single=="+GroupMaxTime2+"");
+        } else if (NUM_OF_ACTION >= 11 && NUM_OF_ACTION <= 20) {
+            Log.i(TAG, "single==" + GroupMaxTime2 + "");
             if (SingleDuration > GroupMaxTime2)
                 GroupMaxTime2 = (float) SingleDuration;
             if (SingleDuration < GroupMinTime2)
                 GroupMinTime2 = (float) SingleDuration;
             GroupSumTime2 += SingleDuration;
-        }
-        else if(NUM_OF_ACTION>=20) {
+        } else if (NUM_OF_ACTION >= 20) {
             if (SingleDuration > GroupMaxTime3)
                 GroupMaxTime3 = (float) SingleDuration;
             if (SingleDuration < GroupMinTime3)
@@ -962,8 +959,8 @@ public class SingleExerciseAnalysis implements ExerciseAnalysis {
             ///给出相应的处理
             currentTimes = 0;
         }
-        if (hasCollected ) {
-            if (dataSelect() ) {
+        if (hasCollected) {
+            if (dataSelect()) {
                 if ((singleScore = ExerciseSpeed()) == 0) {//速度正常
                     startTime = System.currentTimeMillis();
                     ExerciseRecognition();
@@ -1014,9 +1011,9 @@ public class SingleExerciseAnalysis implements ExerciseAnalysis {
     }
 
     /**
-     *  重置最大值最小值
+     * 重置最大值最小值
      */
-    private void reset_Max_Min(){
+    private void reset_Max_Min() {
         mean_max = new double[3]; // max value(mean) of window(gyroscope)
         mean_min = new double[3];
         axisMax_Min_Index = new int[6];
@@ -1024,7 +1021,7 @@ public class SingleExerciseAnalysis implements ExerciseAnalysis {
     }
 
     /**
-     *  判断最大值最小值
+     * 判断最大值最小值
      */
     private void choose_Max_Min(DataSet dataSet) {
         double[] gx = dataSet.getGxSet();
@@ -1033,29 +1030,31 @@ public class SingleExerciseAnalysis implements ExerciseAnalysis {
         double mean_gx = mean(gx);
         double mean_gy = mean(gy);
         double mean_gz = mean(gz);
-        update_Max_Min(mean_gx,mean_gy,mean_gz);
+        update_Max_Min(mean_gx, mean_gy, mean_gz);
     }
-    private void update_Max_Min(double mean_gx,double mean_gy,double mean_gz){
-        if(mean_gx<mean_min[0]){
+
+    private void update_Max_Min(double mean_gx, double mean_gy, double mean_gz) {
+        if (mean_gx < mean_min[0]) {
             mean_min[0] = mean_gx;
             axisMax_Min_Index[1] = segmentCount;
         }
-        if(mean_gx>mean_max[0]){
+        if (mean_gx > mean_max[0]) {
             mean_max[0] = mean_gx;
             axisMax_Min_Index[0] = segmentCount;
         }
-        if(mean_gy<mean_min[1]){
+        if (mean_gy < mean_min[1]) {
             mean_min[1] = mean_gy;
             axisMax_Min_Index[3] = segmentCount;
         }
-        if(mean_gy>mean_max[1]){
+        if (mean_gy > mean_max[1]) {
             mean_max[1] = mean_gy;
             axisMax_Min_Index[2] = segmentCount;
-        }if(mean_gz<mean_min[2]){
+        }
+        if (mean_gz < mean_min[2]) {
             mean_min[2] = mean_gz;
             axisMax_Min_Index[5] = segmentCount;
         }
-        if(mean_gz>mean_max[2]){
+        if (mean_gz > mean_max[2]) {
             mean_max[2] = mean_gz;
             axisMax_Min_Index[4] = segmentCount;
         }
@@ -1063,29 +1062,29 @@ public class SingleExerciseAnalysis implements ExerciseAnalysis {
     }
 
     /**
-     *  选出轴
+     * 选出轴
      */
-    private int chooseAxis(){
+    private int chooseAxis() {
         double gxDiff = mean_max[0] - mean_min[0];
         double gyDiff = mean_max[1] - mean_min[1];
         double gzDiff = mean_max[2] - mean_min[2];
-        if(gxDiff > gyDiff){
-            if(gyDiff > gzDiff){
+        if (gxDiff > gyDiff) {
+            if (gyDiff > gzDiff) {
                 return 1;
-            }else{
-                if(gxDiff > gzDiff){
+            } else {
+                if (gxDiff > gzDiff) {
                     return 1;
-                }else{
+                } else {
                     return 3;
                 }
             }
-        }else{
-            if(gxDiff > gzDiff){
+        } else {
+            if (gxDiff > gzDiff) {
                 return 2;
-            }else{
-                if(gyDiff>gzDiff){
+            } else {
+                if (gyDiff > gzDiff) {
                     return 2;
-                }else{
+                } else {
                     return 3;
                 }
             }
@@ -1093,39 +1092,39 @@ public class SingleExerciseAnalysis implements ExerciseAnalysis {
     }
 
     /**
-     *  计算某一轴的rms最小位置
+     * 计算某一轴的rms最小位置
      */
-    private int rms_MaxToMin(int axis){
-        int left,right;
-        double []g_rms;
-        switch (axis){
+    private int rms_MaxToMin(int axis) {
+        int left, right;
+        double[] g_rms;
+        switch (axis) {
             case 1:
-                left = axisMax_Min_Index[0] > axisMax_Min_Index[1]? axisMax_Min_Index[1]:axisMax_Min_Index[0];
-                Log.i(TAG, "rms_MaxToMin: left"+left);
+                left = axisMax_Min_Index[0] > axisMax_Min_Index[1] ? axisMax_Min_Index[1] : axisMax_Min_Index[0];
+                Log.i(TAG, "rms_MaxToMin: left" + left);
                 right = left == axisMax_Min_Index[0] ? axisMax_Min_Index[1] : axisMax_Min_Index[0];
-                Log.i(TAG, "rms_MaxToMin: right"+right);
-                g_rms = new double[(right-left+1)*5];
-                System.arraycopy(gx_test,left*5,g_rms,0,(right-left+1)*5);
-                Log.i(TAG, "rms_MaxToMin: right-left"+(right-left));
-                return rms(g_rms)+left;
+                Log.i(TAG, "rms_MaxToMin: right" + right);
+                g_rms = new double[(right - left + 1) * 5];
+                System.arraycopy(gx_test, left * 5, g_rms, 0, (right - left + 1) * 5);
+                Log.i(TAG, "rms_MaxToMin: right-left" + (right - left));
+                return rms(g_rms) + left;
             case 2:
-                left = axisMax_Min_Index[2] > axisMax_Min_Index[3]? axisMax_Min_Index[3]:axisMax_Min_Index[2];
-                Log.i(TAG, "rms_MaxToMin: left"+left);
+                left = axisMax_Min_Index[2] > axisMax_Min_Index[3] ? axisMax_Min_Index[3] : axisMax_Min_Index[2];
+                Log.i(TAG, "rms_MaxToMin: left" + left);
                 right = left == axisMax_Min_Index[2] ? axisMax_Min_Index[3] : axisMax_Min_Index[2];
-                Log.i(TAG, "rms_MaxToMin: right"+right);
-                g_rms = new double[(right-left+1)*5];
-                System.arraycopy(gy_test,left*5,g_rms,0,(right-left+1)*5);
-                Log.i(TAG, "rms_MaxToMin: right-left"+(right-left));
-                return rms(g_rms)+left;
+                Log.i(TAG, "rms_MaxToMin: right" + right);
+                g_rms = new double[(right - left + 1) * 5];
+                System.arraycopy(gy_test, left * 5, g_rms, 0, (right - left + 1) * 5);
+                Log.i(TAG, "rms_MaxToMin: right-left" + (right - left));
+                return rms(g_rms) + left;
             case 3:
-                left = axisMax_Min_Index[4] > axisMax_Min_Index[5]? axisMax_Min_Index[5]:axisMax_Min_Index[4];
-                Log.i(TAG, "rms_MaxToMin: left"+left);
+                left = axisMax_Min_Index[4] > axisMax_Min_Index[5] ? axisMax_Min_Index[5] : axisMax_Min_Index[4];
+                Log.i(TAG, "rms_MaxToMin: left" + left);
                 right = left == axisMax_Min_Index[4] ? axisMax_Min_Index[5] : axisMax_Min_Index[4];
-                Log.i(TAG, "rms_MaxToMin: right"+right);
-                g_rms = new double[(right-left+1)*5];
-                System.arraycopy(gz_test,left*5,g_rms,0,(right-left+1)*5);
-                Log.i(TAG, "rms_MaxToMin: right-left"+(right-left));
-                return rms(g_rms)+left;
+                Log.i(TAG, "rms_MaxToMin: right" + right);
+                g_rms = new double[(right - left + 1) * 5];
+                System.arraycopy(gz_test, left * 5, g_rms, 0, (right - left + 1) * 5);
+                Log.i(TAG, "rms_MaxToMin: right-left" + (right - left));
+                return rms(g_rms) + left;
         }
         return -1;
     }
@@ -1158,7 +1157,7 @@ public class SingleExerciseAnalysis implements ExerciseAnalysis {
     /**
      * 返回教练的dtw时间
      */
-    public double getdtwtime(){
+    public double getdtwtime() {
         return dtw_time;
     }
 
@@ -1172,27 +1171,29 @@ public class SingleExerciseAnalysis implements ExerciseAnalysis {
     /**
      * 返回动作的个人模板dtw时间
      */
-    public double getdtwtime_Manual(){
+    public double getdtwtime_Manual() {
         return dtw_time_Manual;
     }
 
 
     /**
-     *  返回fastdtw动作类型
+     * 返回fastdtw动作类型
      */
-    public ExerciseType getExerciseType_fastDTW(){
+    public ExerciseType getExerciseType_fastDTW() {
         return exerciseType_fastDTW;
     }
 
     /**
-     *  返回fastdtw动作时间
+     * 返回fastdtw动作时间
      */
-    public double getfastDTWtime(){return dtw_time_fastdtw;}
+    public double getfastDTWtime() {
+        return dtw_time_fastdtw;
+    }
 
     /**
      * 返回四组动作的dtw时间
      */
-    public double getdtwtime_group4(){
+    public double getdtwtime_group4() {
         return dtw_time_group4;
     }
 
@@ -1283,14 +1284,14 @@ public class SingleExerciseAnalysis implements ExerciseAnalysis {
     }
 
     /**
-     *  求均值
+     * 求均值
      */
-    private native double mean(double []data);
+    private native double mean(double[] data);
 
     /**
-     *  求root mean square(rms)
+     * 求root mean square(rms)
      */
-    private native int rms(double []data);
+    private native int rms(double[] data);
 
     /**
      * 窗口未满15组数据，继续收集
@@ -1479,15 +1480,13 @@ public class SingleExerciseAnalysis implements ExerciseAnalysis {
     }
 
 
-
-
-
     private void setExerciseType(int type) {
         if (type < 1 || type > 17) {
             Log.e(TAG, "setExerciseType(),enter wrong type,type<1 or typr>17");
             return;
         }
         //
+        NUM_OF_ACTION_ARRAY[type - 1]++;
         switch (type) {
             case 1:
                 exerciseType = ExerciseType.Alternate_Dumbbell_Curl_1;
@@ -1535,21 +1534,6 @@ public class SingleExerciseAnalysis implements ExerciseAnalysis {
             case 15:
                 exerciseType = ExerciseType.Dumbbell_Is_The_Shoulder_15;
                 break;
-//            case 16:
-//                exerciseType = ExerciseType.Birds_Standing_16;
-//                break;
-//            case 17:
-//                exerciseType = ExerciseType.Sitting_On_Shoulder_17;
-//                break;
-//            case 18:
-//                exerciseType = ExerciseType.motion_num_eighteen_18;
-//                break;
-//            case 19:
-//                exerciseType = ExerciseType.motion_num_nineteen_19;
-//                break;
-//            case 20:
-//                exerciseType = ExerciseType.motion_num_twenty_20;
-//                break;
             case 16:
                 exerciseType = ExerciseType.TOO_SLOW;
                 break;
@@ -1789,12 +1773,7 @@ public class SingleExerciseAnalysis implements ExerciseAnalysis {
 
 
     private void setActionNum() {
-        //  if (exerciseType == lastType)
         NUM_OF_ACTION++;
-        //   else {
-        //       lastType = exerciseType;
-        //       NUM_OF_ACTION = 1;
-        //   }
         Log.i(TAG, "exerciseType=" + exerciseType + " lastType=" + exerciseTypeManual);
     }
 
@@ -1802,48 +1781,88 @@ public class SingleExerciseAnalysis implements ExerciseAnalysis {
         return NUM_OF_ACTION;
     }
 
-    public float getGroupAveTime1(){
-        return GroupSumTime1/NUM1_OF_ACTION;
+    public int[] getNUM_OF_ACTION_ARRAY() {
+        return NUM_OF_ACTION_ARRAY;
     }
-    public float getGroupMaxTime1(){
+
+    public float getGroupAveTime1() {
+        return GroupSumTime1 / NUM1_OF_ACTION;
+    }
+
+    public float getGroupMaxTime1() {
         return GroupMaxTime1;
     }
-    public float getGroupMinTime1(){
+
+    public float getGroupMinTime1() {
         return GroupMinTime1;
     }
-    public float getGroupMaxDtw1(){ return GroupMaxDtw1;}
-    public float getGroupMinDtw1(){return GroupMinDtw1;}
-    public float getGroupAveDtw1(){return GroupSumDtw1/NUM1_OF_ACTION;}
 
-    public float getGroupAveTime2(){
-        return GroupSumTime2/NUM2_OF_ACTION;
+    public float getGroupMaxDtw1() {
+        return GroupMaxDtw1;
     }
-    public float getGroupMaxTime2(){
+
+    public float getGroupMinDtw1() {
+        return GroupMinDtw1;
+    }
+
+    public float getGroupAveDtw1() {
+        return GroupSumDtw1 / NUM1_OF_ACTION;
+    }
+
+    public float getGroupAveTime2() {
+        return GroupSumTime2 / NUM2_OF_ACTION;
+    }
+
+    public float getGroupMaxTime2() {
         return GroupMaxTime2;
     }
-    public float getGroupMinTime2(){
+
+    public float getGroupMinTime2() {
         return GroupMinTime2;
     }
-    public float getGroupMaxDtw2(){ return GroupMaxDtw2;}
-    public float getGroupMinDtw2(){return GroupMinDtw2;}
-    public float getGroupAveDtw2(){return GroupSumDtw2/NUM2_OF_ACTION;}
 
-    public float getGroupAveTime3(){
-        return GroupSumTime3/NUM3_OF_ACTION;
+    public float getGroupMaxDtw2() {
+        return GroupMaxDtw2;
     }
-    public float getGroupMaxTime3(){
+
+    public float getGroupMinDtw2() {
+        return GroupMinDtw2;
+    }
+
+    public float getGroupAveDtw2() {
+        return GroupSumDtw2 / NUM2_OF_ACTION;
+    }
+
+    public float getGroupAveTime3() {
+        return GroupSumTime3 / NUM3_OF_ACTION;
+    }
+
+    public float getGroupMaxTime3() {
         return GroupMaxTime3;
     }
-    public float getGroupMinTime3(){
+
+    public float getGroupMinTime3() {
         return GroupMinTime3;
     }
-    public float getGroupMaxDtw3(){ return GroupMaxDtw3;}
-    public float getGroupMinDtw3(){return GroupMinDtw3;}
-    public float getGroupAveDtw3(){return GroupSumDtw3/NUM3_OF_ACTION;}
+
+    public float getGroupMaxDtw3() {
+        return GroupMaxDtw3;
+    }
+
+    public float getGroupMinDtw3() {
+        return GroupMinDtw3;
+    }
+
+    public float getGroupAveDtw3() {
+        return GroupSumDtw3 / NUM3_OF_ACTION;
+    }
 
 
-    public double getTotalTime(){return totalTime;}
-    public double getActionDuration(){
+    public double getTotalTime() {
+        return totalTime;
+    }
+
+    public double getActionDuration() {
         return SingleDuration;
     }
 
@@ -1874,39 +1893,43 @@ public class SingleExerciseAnalysis implements ExerciseAnalysis {
     public int getSingleDtwScore() {
         return SINGLE_DTW_SCORE;
     }
-    public int getSingleDTW(){
+
+    public int getSingleDTW() {
         return SINGLE_DTW;
     }
 
-    public double [] getAxArray(){
+    public double[] getAxArray() {
         return ax_test;
     }
-    public double []getAyArray(){
+
+    public double[] getAyArray() {
         return ay_test;
     }
-    public double []getAzArray(){
+
+    public double[] getAzArray() {
         return az_test;
     }
-    public double []getGxArray(){
+
+    public double[] getGxArray() {
         return gx_test;
     }
-    public double []getGyArray(){
+
+    public double[] getGyArray() {
         return gy_test;
     }
-    public double []getGzArray(){
+
+    public double[] getGzArray() {
         return gz_test;
     }
 
-    public double[] getSelectedDataSet(int index)
-    {
-        if(selectedFlag)
+    public double[] getSelectedDataSet(int index) {
+        if (selectedFlag)
             return selectedDataSet.getDataByIndex(index);
         return null;
     }
 
-    public double[] getSelectedDataSet_Manual(int index)
-    {
-        if(selectedFlag_Manual)
+    public double[] getSelectedDataSet_Manual(int index) {
+        if (selectedFlag_Manual)
             return selectedDataSet_Manual.getDataByIndex(index);
         return null;
     }
@@ -1935,7 +1958,7 @@ public class SingleExerciseAnalysis implements ExerciseAnalysis {
         }
     }
 
-    private class FastDTWTask implements Callable<Double>{
+    private class FastDTWTask implements Callable<Double> {
 
         private DynamicTimeWarping dtw;
         private double[] t;
@@ -1951,7 +1974,7 @@ public class SingleExerciseAnalysis implements ExerciseAnalysis {
 
         @Override
         public Double call() throws Exception {
-            return dtw.getfastDtwValue(t,num,r);
+            return dtw.getfastDtwValue(t, num, r);
         }
 
     }

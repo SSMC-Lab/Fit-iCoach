@@ -17,56 +17,56 @@ import fruitbasket.com.bodyfit.R;
 import fruitbasket.com.bodyfit.bluetooth.BluetoothFragment;
 
 public class BluetoothTestFragment extends BluetoothFragment {
-    public static final String TAG="BluetoothTestFragment";
+    public static final String TAG = "BluetoothTestFragment";
 
     private ToggleButton toggleButtonConnect;
     private TextView itemsPreSecond;
-    private TextView runTime,time, ax, ay, az, gx, gy, gz, mx, my, mz, p1, p2, p3,exercise_type,exercise_num,repetition_score,set_score,errorMessages;
+    private TextView runTime, time, ax, ay, az, gx, gy, gz, mx, my, mz, p1, p2, p3, exercise_type, exercise_num, repetition_score, set_score, errorMessages;
 
     private Timer timer;
-    private int errorStringNumber=0;
+    private int errorStringNumber = 0;
 
     @Override
-    public void onCreate(Bundle savedInstanceState){
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.i(TAG, "onCreate()");
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater,ViewGroup container,Bundle savedInstanceState){
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Log.i(TAG, "onCreateView()");
-        View view=inflater.inflate(R.layout.bluetooth_test,container,false);
+        View view = inflater.inflate(R.layout.bluetooth_test, container, false);
         initView(view);
         return view;
     }
 
     @Override
-    public void onResume(){
+    public void onResume() {
         super.onResume();
         Log.i(TAG, "onResume()");
     }
 
     @Override
-    public void onPause(){
+    public void onPause() {
         super.onPause();
         Log.i(TAG, "onPause()");
     }
 
     @Override
-    public void onStop(){
+    public void onStop() {
         super.onStop();
         Log.i(TAG, "onStop()");
     }
 
     @Override
-    public void onDestroy(){
+    public void onDestroy() {
         Log.i(TAG, "onDestroy()");
         super.onDestroy();
     }
 
     @Override
     protected void updateUI(int what, Bundle bundle) {
-        switch(what){
+        switch (what) {
             case Conditions.MESSAGE_BLUETOOTH_TEST:
                 itemsPreSecond.setText(String.valueOf(bundle.getDouble(Conditions.JSON_KEY_ITEMS_PRE_SECOND)));
                 time.setText(String.valueOf(bundle.getDouble("time")));
@@ -93,18 +93,18 @@ public class BluetoothTestFragment extends BluetoothFragment {
 
             case Conditions.MESSAGE_ERROR_JSON:
                 ++errorStringNumber;
-                errorMessages.append("\n\njson error "+errorStringNumber+" :\n"+String.valueOf(bundle.getString(Conditions.JSON_KEY_JOSNERROR)));
+                errorMessages.append("\n\njson error " + errorStringNumber + " :\n" + String.valueOf(bundle.getString(Conditions.JSON_KEY_JOSNERROR)));
                 break;
 
             default:
         }
     }
 
-    private void initView(View view){
-        ToggleClickListener toggleClickListener=new ToggleClickListener();
+    private void initView(View view) {
+        ToggleClickListener toggleClickListener = new ToggleClickListener();
 
-        toggleButtonConnect=(ToggleButton)view.findViewById(R.id.toggle_button_test_connect);
-        runTime=(TextView)view.findViewById(R.id.run_time);
+        toggleButtonConnect = (ToggleButton) view.findViewById(R.id.toggle_button_test_connect);
+        runTime = (TextView) view.findViewById(R.id.run_time);
         itemsPreSecond = (TextView) view.findViewById(R.id.items_pre_second);
         time = (TextView) view.findViewById(R.id.time);
         ax = (TextView) view.findViewById(R.id.ax);
@@ -120,21 +120,22 @@ public class BluetoothTestFragment extends BluetoothFragment {
         p2 = (TextView) view.findViewById(R.id.p2);
         p3 = (TextView) view.findViewById(R.id.p3);
 
-        exercise_type=(TextView) view.findViewById(R.id.exercise_type);
-        exercise_num= (TextView) view.findViewById(R.id.exercise_num);
-        repetition_score=(TextView) view.findViewById(R.id.reptition_score);
-        set_score=(TextView) view.findViewById(R.id.set_score);
+        exercise_type = (TextView) view.findViewById(R.id.exercise_type);
+        exercise_num = (TextView) view.findViewById(R.id.exercise_num);
+        repetition_score = (TextView) view.findViewById(R.id.reptition_score);
+        set_score = (TextView) view.findViewById(R.id.set_score);
 
-        errorMessages=(TextView) view.findViewById(R.id.error_messages);
+        errorMessages = (TextView) view.findViewById(R.id.error_messages);
 
         toggleButtonConnect.setOnClickListener(toggleClickListener);
     }
 
 
-    private void startTimeCounter(){
-        timer=new Timer();
+    private void startTimeCounter() {
+        timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask() {
-            int counter=0;
+            int counter = 0;
+
             @Override
             public void run() {
                 runTime.post(new Runnable() {
@@ -144,31 +145,27 @@ public class BluetoothTestFragment extends BluetoothFragment {
                     }
                 });
             }
-        },0,1000);
+        }, 0, 1000);
     }
 
-    private void stopTimeCounter(){
-        if(timer!=null){
+    private void stopTimeCounter() {
+        if (timer != null) {
             timer.cancel();
-            timer=null;
+            timer = null;
         }
     }
-
-
-
 
 
     private class ToggleClickListener implements View.OnClickListener {
 
         @Override
         public void onClick(View view) {
-            switch(view.getId()){
+            switch (view.getId()) {
                 case R.id.toggle_button_test_connect:
-                    if(((ToggleButton)view).isChecked()==true){
+                    if (((ToggleButton) view).isChecked() == true) {
                         startWork();
                         startTimeCounter();
-                    }
-                    else{
+                    } else {
                         stopWork();
                         stopTimeCounter();
                     }

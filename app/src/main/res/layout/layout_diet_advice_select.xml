@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/dietAdviceActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="fruitbasket.com.bodyfit.ui.DietAdviceSelectActivity"
+    tools:context="fruitbasket.com.bodyfit.DietRecommendations.DietAdviceSelectActivity"
     android:orientation="vertical">
 
 
@@ -182,13 +183,17 @@
 
     </LinearLayout>
 
-    <Button
+    <com.spark.submitbutton.SubmitButton
         android:id="@+id/submitButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="提交"
-        android:textAllCaps="false"
-        android:layout_margin="8dp"
-        />
+        android:layout_width="250dp"
+        android:layout_height="70dp"
+        android:layout_gravity="center_horizontal"
+        android:text="Submit"
+        android:textColor="@color/gray"
+        app:sub_btn_background="@color/white"
+        app:sub_btn_duration="100"
+        app:sub_btn_line_color="#1E90FF"
+        app:sub_btn_ripple_color="#1E90FF"
+        app:sub_btn_tick_color="@color/white" />
 
 </LinearLayout>

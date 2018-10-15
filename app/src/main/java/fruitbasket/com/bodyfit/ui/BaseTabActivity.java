@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public abstract class BaseTabActivity extends FragmentActivity{
+public abstract class BaseTabActivity extends FragmentActivity {
 
     private Map<String, Fragment> mFragMap;
     private ArrayList<View> mViewList;
@@ -102,8 +102,6 @@ public abstract class BaseTabActivity extends FragmentActivity{
             mFragMap.put(str, fragment);
         }
     }
-
-
 
 
     private View.OnClickListener mTabClickListener = new View.OnClickListener() {

@@ -34,7 +34,7 @@ public class ViewUtil {
         }
     }
 
-    public static void setViewsEnableAndClickable(boolean enable,boolean clickable, View... views) {
+    public static void setViewsEnableAndClickable(boolean enable, boolean clickable, View... views) {
         for (View view : views) {
             view.setEnabled(enable);
             view.setClickable(clickable);
